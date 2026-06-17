@@ -1,0 +1,47 @@
+<div class="expense-form container mt-5">
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h3 class="mb-0">Cadastrar Gasto</h3>
+    </div>
+    <div class="card-body">
+      <form #expenseForm="ngForm" (ngSubmit)="onSubmit()" >
+        <div class="mb-3 input-group">
+          <label for="description" class="form-label">Descrição</label>
+          <div class="d-flex align-items-center">
+            <input id="description" [(ngModel)]="expense.description" name="description" class="form-control" required>
+
+          </div>
+        </div>
+
+        <div class="mb-3 input-group">
+          <label for="cost" class="form-label">Valor</label>
+          <div class="d-flex align-items-center">
+            <input id="cost" type="number" [(ngModel)]="expense.cost" name="cost" class="form-control" required>
+
+
+          </div>
+        </div>
+
+        <div class="mb-3 input-group">
+          <label for="expenseDate" class="form-label">Data</label>
+          <div class="d-flex align-items-center">
+            <input id="expenseDate" type="date" [(ngModel)]="expense.expenseDate" name="expenseDate" class="form-control" required>
+
+          </div>
+        </div>
+
+        <div class="mb-3 input-group">
+          <label for="category" class="form-label">Categoria</label>
+          <div class="d-flex align-items-center">
+            <input id="category" [(ngModel)]="expense.category.name" name="category" class="form-control" required>
+
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Salvar</button>
+        <button type="button" class="btn btn-light w-100" (click)="expenseForm.resetForm()">Limpar</button>
+        <button type="button" class="btn btn-light w-100" (click)="navigation.goTo('') ">Home</button>
+      </form>
+    </div>
+  </div>
+</div>
