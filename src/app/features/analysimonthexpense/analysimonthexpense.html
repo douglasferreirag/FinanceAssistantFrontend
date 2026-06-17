@@ -1,0 +1,64 @@
+<div class="analysisexpense-layout">
+  <!-- Aside do Chatbot -->
+  <aside class="chatbot-aside">
+    <h3>Assistente Financeiro</h3>
+    <p>Converse comigo sobre seus gastos e metas.</p>
+
+    <!-- Área de mensagens -->
+    <div class="chat-window">
+      <!-- Mensagem inicial fixa -->
+      <div class="message agent">
+        <strong>Agente:</strong> Olá, Douglas! Vamos analisar seus gastos?
+      </div>
+
+      <!-- Renderiza as mensagens do array messages -->
+      @for (msg of messages; track msg) {
+        <div class="message" [class.agent]="msg.sender === 'bot'" [class.user]="msg.sender === 'user'">
+          <strong>{{ msg.sender === 'bot' ? 'Agente:' : 'Você:' }}</strong>
+          {{ msg.text }}
+        </div>
+      }
+    </div>
+
+  </aside>
+
+  <!-- Aside do Formulário -->
+  <aside class="form-aside">
+    <div class="card">
+      <div class="card-header">
+        <h3>Analisar Gastos</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="month" required >Mês</label>
+            <select id="month" [(ngModel)]="month" name="month" required>
+              <option value="0">Selecione</option>  
+              <option value="1">Janeiro</option>
+              <option value="2">Fevereiro</option>
+              <option value="3">Março</option>
+              <option value="4">Abril</option>
+              <option value="5">Maio</option>
+              <option value="6">Junho</option>
+              <option value="7">Julho</option>
+              <option value="8">Agosto</option>
+              <option value="9">Setembro</option>
+              <option value="10">Outubro</option>
+              <option value="11">Novembro</option>
+              <option value="12">Dezembro</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="year" required>Ano</label>
+            <input id="year" type="number" [(ngModel)]="year" name="year" required>
+          </div>
+
+          <button type="submit" class = "send-btn" > Analisar
+            
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+</div>

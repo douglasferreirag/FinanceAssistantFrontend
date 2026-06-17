@@ -1,0 +1,34 @@
+<div class="expense-list">
+  <h2>📊 Lista Geral de Gastos</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (expense of expenses$ | async; track expense.id) {
+        <tr>
+          <td>{{ expense.description }}</td>
+          <td>{{ expense.cost | currency:'BRL' }}</td>
+          <td>{{ expense.expenseDate | date:'shortDate' }}</td>
+          <td>{{ expense.category.name }}</td>
+        </tr>
+      }
+
+      @if ((expenses$ | async)?.length === 0) {
+        <tr>
+          <td colspan="4" style="text-align:center; font-style:italic;">
+            Nenhum gasto listado ainda.
+          </td>
+        </tr>
+      }
+    </tbody>
+
+  </table>
+  <button type="button" class="btn btn-light w-100" (click)="navigation.goTo('') ">Home</button>
+</div>

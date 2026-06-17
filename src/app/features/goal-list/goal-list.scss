@@ -1,0 +1,80 @@
+.goal-list {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  font-family: 'Inter', sans-serif;
+  color: #333;
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+
+    thead {
+      background: #f3f4f6;
+
+      th {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #374151;
+        border-bottom: 2px solid #e5e7eb;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: #f9fafb;
+        }
+
+        td {
+          padding: 0.75rem 1rem;
+          font-size: 0.9rem;
+          color: #4b5563;
+          border-bottom: 1px solid #e5e7eb;
+
+          &:first-child {
+            font-weight: 600;
+            color: #111827;
+          }
+        }
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+    }
+  }
+
+  button {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    background: #38bdf8;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: #0ea5e9;
+    }
+  }
+}

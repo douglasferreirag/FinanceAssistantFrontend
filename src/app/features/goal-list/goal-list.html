@@ -1,0 +1,33 @@
+<div class="goal-list">
+  <h2>🎯 Lista de Metas de Economia</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Valor Limite</th>
+        <th>Mês</th>
+        <th>Ano</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (goal of goals$ | async; track goal.id) {
+        <tr>
+          
+          <td>{{ goal.limit_value}}</td>
+          <td>{{ goal.month }}</td>
+          <td>{{ goal.year }}</td>
+        </tr>
+      }
+
+      @if ((goals$ | async)?.length === 0) {
+        <tr>
+          <td colspan="3" style="text-align:center; font-style:italic;">
+            Nenhuma meta cadastrada ainda.
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-light w-100" (click)="navigation.goTo('')">Home</button>
+</div>
