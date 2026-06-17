@@ -18,10 +18,12 @@
     <!-- Valor limite -->
     <div>
       <label for="limitValue">Teto de Gastos:</label>
-      <input id="limitValue" type="number" [(ngModel)]="goal.limitValue" name="limitValue" required>
+      <input id="limitValue" type="number" [(ngModel)]="goal.limit_value" name="limit_value" required>
     </div>
 
     <!-- Botão -->
-    <button type="submit" [disabled]="goalForm.invalid">Salvar Meta</button>
+    <button type="submit" [disabled]="goalForm.invalid">Salvar</button>
+    <button type="button" (click)="goalForm.resetForm()">Limpar</button>
+    <button type="button" (click)="navigation.goTo('') ">Home</button>
   </form>
 </div>

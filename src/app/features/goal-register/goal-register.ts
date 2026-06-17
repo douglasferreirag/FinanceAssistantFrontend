@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { NavigationService } from '../../utils/NavigationService';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class GoalRegisterComponent {
   goal = {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
-    limitValue: 0,
+    limit_value: 0,
 
   };
 
@@ -24,7 +24,9 @@ export class GoalRegisterComponent {
 
   @Output() closed = new EventEmitter<void>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient,
+               public navigation: NavigationService
+  ) {}
 
 
   onSubmit() {
@@ -33,15 +35,18 @@ export class GoalRegisterComponent {
     const goalPayload = {
       month: this.goal.month,
       year: this.goal.year,
-      limitValue: this.goal.limitValue,
+      limit_value: this.goal.limit_value,
 
     };
 
+    alert(JSON.stringify(goalPayload));
+
     this.http.post<any>('http://localhost:8080/api/goals/save', goalPayload).subscribe({
+
         next: (res) => {
           alert(`✅ Meta cadastrada com sucesso: ${res.description || 'OK'}`);
-          this.resetForm();
-          this.router.navigate(['/goals']);
+
+
         },
         error: (err) => {
           console.error(err);
@@ -51,14 +56,7 @@ export class GoalRegisterComponent {
     }
 
 
-  resetForm() {
-    this.goal = {
-      month: new Date().getMonth() + 1,
-      year: new Date().getFullYear(),
-      limitValue: 0,
 
-    };
-  }
 
- 
+
 }
