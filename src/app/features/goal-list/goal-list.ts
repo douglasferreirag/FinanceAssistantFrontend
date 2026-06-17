@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Goal } from '../models/goal.model';
+import { Goal } from '../../models/goal.model';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { NavigationService } from '../utils/NavigationService';
+import { NavigationService } from '../../utils/NavigationService';
+
 
 
 @Component({

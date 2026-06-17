@@ -4,7 +4,8 @@ import { ExpenseRegisterComponent } from './features/expense-register/expense-re
 import { ExpenseListComponent } from './features/expense-list/expense-list';
 import { AnalysiMonthExpenseComponent  } from './features/analysimonthexpense/analysimonthexpense';
 import { GoalRegisterComponent } from './features/goal-register/goal-register';
-import { GoalListComponent } from './goal-list/goal-list';
+import { GoalListComponent } from './features/goal-list/goal-list';
+
 
 
 
