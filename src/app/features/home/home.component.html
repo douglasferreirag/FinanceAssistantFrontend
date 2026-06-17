@@ -1,0 +1,37 @@
+<div class="assistant-layout">
+  <!-- Sidebar do agente -->
+  <aside class="agent-sidebar">
+    <h3>Assistente Financeiro</h3>
+    <p>Escolha uma opção. Você me fala ela, se quiser.</p>
+
+    <div class="options">
+      
+      <div class="card" (click)="navigation.goTo('cadastrar-gasto')">
+        💸 <h4>Cadastrar gasto</h4>
+        <p>Adicione uma nova despesa ao seu controle.</p>
+      </div>
+
+      <div class="card" (click)="navigation.goTo('listar-gasto')">
+        📋 <h4>Listar gastos</h4>
+        <p>Veja todas as despesas registradas em ordem cronológica.</p>
+      </div>
+
+      <div class="card" (click)="navigation.goTo('analisar-gasto')">
+        📊 <h4>Analisar gastos</h4>
+        <p>Visualize gráficos e relatórios para entender seus hábitos.</p>
+      </div>
+
+      <div class="card" (click)="navigation.goTo('cadastrar-metas')">
+        🎯 <h4>Metas de economia</h4>
+        <p>Defina objetivos para reduzir despesas e acompanhar seu progresso.</p>
+      </div>
+    </div>
+
+
+  </aside>
+
+  <!-- Aside da imagem -->
+  <aside class="image-aside">
+    <div class="image-wrapper"></div>
+  </aside>
+</div>
