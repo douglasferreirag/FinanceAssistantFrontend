@@ -1,0 +1,27 @@
+<div class="goal-container">
+  <h2>Criar Meta</h2>
+
+  <form (ngSubmit)="onSubmit()" #goalForm="ngForm" class="goal-form">
+
+    <!-- Mês -->
+    <div>
+      <label for="month">Mês:</label>
+      <input id="month" type="number" [(ngModel)]="goal.month" name="month" required>
+    </div>
+
+    <!-- Ano -->
+    <div>
+      <label for="year">Ano:</label>
+      <input id="year" type="number" [(ngModel)]="goal.year" name="year" required>
+    </div>
+
+    <!-- Valor limite -->
+    <div>
+      <label for="limitValue">Teto de Gastos:</label>
+      <input id="limitValue" type="number" [(ngModel)]="goal.limitValue" name="limitValue" required>
+    </div>
+
+    <!-- Botão -->
+    <button type="submit" [disabled]="goalForm.invalid">Salvar Meta</button>
+  </form>
+</div>
