@@ -4,22 +4,22 @@
     <nav class="navbar">
       <h3 class="logo">Assistente Financeiro</h3>
       <ul class="nav-links">
-        <!-- Menu Gastos -->
+        <!-- Menu Expenses -->
         <li class="nav-item dropdown">
           <button class="nav-link">💸 Gastos</button>
           <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('cadastrar-gasto')">➕ Cadastrar </button></li>
-            <li><button (click)="navigation.goTo('listar-gasto')">📋 Listar</button></li>
-            <li><button (click)="navigation.goTo('analisar-gasto')">📊 Analisar</button></li>
+            <li><button (click)="navigation.goTo('register-expense')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-expenses')">📋 Listagem</button></li>
+            <li><button (click)="navigation.goTo('analyze-expenses')">📊 Análise</button></li>
           </ul>
         </li>
 
-        <!-- Menu Metas -->
+        <!-- Menu Goals -->
         <li class="nav-item dropdown">
           <button class="nav-link">🎯 Metas</button>
           <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('cadastrar-metas')">➕ Cadastrar </button></li>
-            <li><button (click)="navigation.goTo('listar-metas')">📋 Listar </button></li>
+            <li><button (click)="navigation.goTo('register-goal')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-goals')">📋 Listagem</button></li>
           </ul>
         </li>
       </ul>
@@ -32,12 +32,12 @@
       <div class="image-wrapper"></div>
     </aside>
     <section class="content">
-      <!-- Aqui entra o conteúdo principal -->
+      <!-- Main content goes here -->
     </section>
   </main>
 
   <!-- Footer -->
   <footer class="site-footer">
-    <p>© 2026 Assistente Financeiro - Todos os direitos reservados</p>
+    <p>© 2026 Assistente Financeiro - All rights reserved</p>
   </footer>
 </div>
