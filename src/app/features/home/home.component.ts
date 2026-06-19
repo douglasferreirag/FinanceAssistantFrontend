@@ -15,9 +15,13 @@ export class HomeComponent {
           userInput: string = '';
 
 
-
           constructor(public navigation: NavigationService) {}
 
+          openSection: string | null = null;
+
+          toggleSection(section: string) {
+            this.openSection = this.openSection === section ? null : section;
+          }
 
 
 
@@ -26,7 +30,7 @@ export class HomeComponent {
             this.userInput = '';
           }
 
-        
+
 
 
 }
