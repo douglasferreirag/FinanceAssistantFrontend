@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoalRegister } from './goal-register';
+import { GoalRegisterComponent } from './goal-register';
 
-describe('GoalRegister', () => {
-  let component: GoalRegister;
-  let fixture: ComponentFixture<GoalRegister>;
+describe('GoalRegisterComponent', () => {
+  let component: GoalRegisterComponent;
+  let fixture: ComponentFixture<GoalRegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GoalRegister],
+      imports: [GoalRegisterComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GoalRegister);
+    fixture = TestBed.createComponent(GoalRegisterComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

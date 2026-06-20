@@ -1,0 +1,168 @@
+/* Layout principal */
+.assistant-layout {
+  min-height: 100vh; /* ocupa toda a altura da tela */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.site-header {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+
+      .nav-item {
+        .nav-link {
+          background: transparent;
+          border: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: #fff;
+          cursor: pointer;
+          padding: 0.5rem 1rem;
+          border-radius: 6px;
+          transition: all 0.2s ease;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+          }
+
+          &:active {
+            background: rgba(255, 255, 255, 0.3);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsividade do menu */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .nav-links {
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .nav-link {
+      width: 100%;
+      text-align: left;
+    }
+  }
+}
+
+/* Body */
+.site-body {
+  flex: 1; /* ocupa o espaço entre header e footer */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 3rem; /* mais respiro lateral */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Container geral do formulário */
+.form-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3rem 2.5rem; /* aumentei o padding interno */
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+/* Corpo do formulário */
+.form-body {
+  display: flex;
+  flex-direction: column;
+
+  .form-group {
+    margin-bottom: 1.8rem;
+  }
+
+  .form-control {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #111827;
+    background-color: #f9fafb;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;   /* descola do label */
+    margin-bottom: 0.5rem;/* dá respiro entre inputs */
+
+    &::placeholder {
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    &:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+      background-color: #fff;
+    }
+  }
+}
+
+/* Footer */
+.site-footer {
+  background: linear-gradient(90deg, #1e3a8a, #2563eb);
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative; /* não sobrepõe mais o conteúdo */
+}
+
+/* Responsividade do footer */
+@media (max-width: 768px) {
+  .site-footer {
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-link {
+    width: 100%;
+    text-align: center;
+  }
+}
