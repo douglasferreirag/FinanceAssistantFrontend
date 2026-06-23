@@ -1,34 +1,60 @@
-<div class="expense-list">
-  <h2>📊 Lista Geral de Gastos</h2>
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">Assistente Financeiro</div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="navigation.goTo('')">
+            🏠 Página inicial
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Descrição</th>
-        <th>Valor</th>
-        <th>Data</th>
-        <th>Categoria</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (expense of expenses$ | async; track expense.id) {
-        <tr>
-          <td>{{ expense.description }}</td>
-          <td>{{ expense.cost | currency:'BRL' }}</td>
-          <td>{{ expense.expenseDate | date:'shortDate' }}</td>
-          <td>{{ expense.category.name }}</td>
-        </tr>
-      }
+  <!-- Body -->
+  <main class="site-body">
+    <section class="content">
+      <div class="expense-container">
+        <h2 class="expense-title">📊 Lista Geral de Gastos</h2>
 
-      @if ((expenses$ | async)?.length === 0) {
-        <tr>
-          <td colspan="4" style="text-align:center; font-style:italic;">
-            Nenhum gasto listado ainda.
-          </td>
-        </tr>
-      }
-    </tbody>
+        <div class="expense-body">
+          <table class="table">
+            <thead class="table-head">
+              <tr class="table-row table-row-head">
+                <th class="table-cell table-cell-head">Descrição</th>
+                <th class="table-cell table-cell-head">Valor</th>
+                <th class="table-cell table-cell-head">Data</th>
+                <th class="table-cell table-cell-head">Categoria</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              @for (expense of expenses$ | async; track expense.id) {
+                <tr class="table-row">
+                  <td class="table-cell">{{ expense.description }}</td>
+                  <td class="table-cell">{{ expense.cost | currency:'BRL' }}</td>
+                  <td class="table-cell">{{ expense.expenseDate | date:'shortDate' }}</td>
+                  <td class="table-cell">{{ expense.category.name }}</td>
+                </tr>
+              }
 
-  </table>
-  <button type="button" class="btn btn-light w-100" (click)="navigation.goTo('') ">Home</button>
+              @if ((expenses$ | async)?.length === 0) {
+                <tr class="table-row table-row-empty">
+                  <td colspan="4" class="table-cell table-cell-empty">
+                    Nenhum gasto listado ainda.
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    © 2026 Assistente Financeiro - All rights reserved.
+  </footer>
 </div>

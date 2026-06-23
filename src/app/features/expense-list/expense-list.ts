@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Expense } from '../../models/expense.model';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NavigationService } from '../../utils/NavigationService';
 
 @Component({
   selector: 'app-expense-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AsyncPipe],
   templateUrl: './expense-list.html',
   styleUrls: ['./expense-list.scss'],
 })
