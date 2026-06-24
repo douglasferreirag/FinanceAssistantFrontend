@@ -18,13 +18,15 @@ export class ExpenseListComponent implements OnInit {
   constructor(private http: HttpClient, public navigation: NavigationService) {}
 
   ngOnInit(): void {
-    this.fetchExpenses(); // chama o back assim que a página carrega
+
 
   }
 
+
+
   expenses$!: Observable<Expense[]>;
 
-  private fetchExpenses(): void {
+  fetchExpenses(): void {
     this.expenses$ = this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll');
   }
 

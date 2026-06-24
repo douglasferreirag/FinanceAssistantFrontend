@@ -1,33 +1,73 @@
-<div class="goal-list">
-  <h2>🎯 Lista de Metas de Economia</h2>
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">Assistente Financeiro</div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="navigation.goTo('')">
+            🏠 Página inicial
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button" (click)="fetchGoals()">
+            🗒️ Exibir Metas
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button">
+            🧾 Exportar CSV
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button">
+            📊 Dashboard
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Valor Limite</th>
-        <th>Mês</th>
-        <th>Ano</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (goal of goals$ | async; track goal.id) {
-        <tr>
-          
-          <td>{{ goal.limit_value}}</td>
-          <td>{{ goal.month }}</td>
-          <td>{{ goal.year }}</td>
-        </tr>
-      }
+  <!-- Body -->
+  <main class="site-body">
+    <section class="content">
+      <div class="goal-container">
+        <h2 class="goal-title">🎯 Lista de Metas de Economia</h2>
 
-      @if ((goals$ | async)?.length === 0) {
-        <tr>
-          <td colspan="3" style="text-align:center; font-style:italic;">
-            Nenhuma meta cadastrada ainda.
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
+        <div class="goal-body">
+          <table class="table">
+            <thead class="table-head">
+              <tr class="table-row table-row-head">
+                <th class="table-cell table-cell-head">Valor limite</th>
+                <th class="table-cell table-cell-head">Mês</th>
+                <th class="table-cell table-cell-head">Ano</th>
+              </tr>
+            </thead>
+            <tbody class="table-body">
+              @for (goal of goals$ | async; track goal.id) {
+                <tr class="table-row">
+                  <td class="table-cell">{{ goal.limit_value }}</td>
+                  <td class="table-cell">{{ goal.month }}</td>
+                  <td class="table-cell">{{ goal.year }}</td>
+                </tr>
+              }
 
-  <button type="button" class="btn btn-light w-100" (click)="navigation.goTo('')">Home</button>
+              @if ((goals$ | async)?.length === 0) {
+                <tr class="table-row table-row-empty">
+                  <td colspan="3" class="table-cell table-cell-empty">
+                    Nenhuma meta cadastrada ainda.
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    © 2026 Assistente Financeiro - All rights reserved.
+  </footer>
 </div>

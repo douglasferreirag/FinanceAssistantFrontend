@@ -19,14 +19,15 @@ export class GoalListComponent implements OnInit {
 
   constructor(private http: HttpClient, public navigation: NavigationService) {}
 
-  ngOnInit(): void {
-    this.fetchGoals(); // chama o back assim que a página carrega
-
-  }
 
   goals$!: Observable<Goal[]>;
 
-  private fetchGoals(): void {
+  ngOnInit(): void {
+
+
+  }
+
+  fetchGoals(): void {
     this.goals$ = this.http.get<Goal[]>('http://localhost:8080/api/goals/findAll');
   }
 
