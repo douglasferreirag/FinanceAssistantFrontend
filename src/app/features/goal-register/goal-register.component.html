@@ -1,0 +1,56 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <h3 class="logo">Assistente Financeiro</h3>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="nav-link btn-primary" type="submit" form="goalForm">💾 Cadastrar</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="goalForm.resetForm()">🧹 Limpar</button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="navigation.goTo('')">🏠 Página Inicial</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Body -->
+  <main class="site-body">
+    <section class="content">
+      <div class="form-container">
+        <h2 class="form-title">🎯 Cadastrar Meta</h2>
+
+        <form (ngSubmit)="onSubmit()" #goalForm="ngForm" class="form-body" id="goalForm">
+          <!-- Month -->
+          <div class="form-group">
+            <label for="month" class="form-label">Month</label>
+            <input id="month" type="number" [(ngModel)]="goal.month" name="month" class="form-control" required>
+          </div>
+
+          <!-- Year -->
+          <div class="form-group">
+            <label for="year" class="form-label">Year</label>
+            <input id="year" type="number" [(ngModel)]="goal.year" name="year" class="form-control" required>
+          </div>
+
+          <!-- Expense Limit -->
+          <div class="form-group">
+            <label for="limitValue" class="form-label">Expense Limit</label>
+            <input id="limitValue" type="number" [(ngModel)]="goal.limit_value" name="limit_value" class="form-control" required>
+          </div>
+
+
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2026 Assistente Financeiro - All rights reserved</p>
+  </footer>
+</div>
