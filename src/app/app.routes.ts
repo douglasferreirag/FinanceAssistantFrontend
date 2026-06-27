@@ -5,6 +5,7 @@ import { ExpenseListComponent } from './features/expense-list/expense-list';
 import { AnalysiMonthExpenseComponent } from './features/analysimonthexpense/analysimonthexpense';
 import { GoalRegisterComponent } from './features/goal-register/goal-register';
 import { GoalListComponent } from './features/goal-list/goal-list';
+import { ExpenseDashboardComponent } from './features/expensedashboard/expensedashboard';
 
 export const routes: Routes = [
   {
@@ -12,8 +13,12 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'register-expense',   
+    path: 'register-expense',
     component: ExpenseRegisterComponent
+  },
+   {
+    path: 'register-goal',
+    component: GoalRegisterComponent
   },
   {
     path: 'list-expenses',
@@ -28,7 +33,9 @@ export const routes: Routes = [
     component: AnalysiMonthExpenseComponent
   },
   {
-    path: 'register-goal',
-    component: GoalRegisterComponent
-  }
+    path: 'expense-dashboard',
+    component: ExpenseDashboardComponent
+  },
+
+
 ];

@@ -1,27 +1,3 @@
-.analysis-layout {
-  display: flex;
-  gap: 2rem;
-  width: 100%;
-  align-items: flex-start;
-}
-
-.chatbot-avatar-aside {
-  width: 200px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.chatbot-avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.form-aside {
-  flex: 1;
+.site-body {
+  background: #f9fafb; // fundo clean e neutro para destacar os números
 }
