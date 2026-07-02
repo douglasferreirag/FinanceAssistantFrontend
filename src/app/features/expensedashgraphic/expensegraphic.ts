@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, ChartType, registerables } from 'chart.js';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 // Registrar todos os componentes necessários
 Chart.register(...registerables);
@@ -9,7 +10,8 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-expensegraphic',
   templateUrl: './expensegraphic.component.html',
-  styleUrls: ['./expensegraphic.scss']
+  styleUrls: ['./expensegraphic.scss'],
+  imports: [Footer]
 })
 export class ExpenseGraphicComponent {
   private apiUrl = 'http://localhost:8080/api/expense-graphic';

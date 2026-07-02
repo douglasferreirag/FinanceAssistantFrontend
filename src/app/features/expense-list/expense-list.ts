@@ -4,11 +4,12 @@ import { Expense } from '../../models/expense.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 @Component({
   selector: 'app-expense-list',
   standalone: true,
-  imports: [CommonModule, AsyncPipe],
+  imports: [CommonModule, AsyncPipe, Footer],
   templateUrl: './expense-list.html',
   styleUrls: ['./expense-list.scss'],
 })

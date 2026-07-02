@@ -2,12 +2,13 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 
 @Component({
   selector: 'app-goal-form',
   standalone: true,
-  imports: [FormsModule],   // ✅ necessário para ngModel
+  imports: [FormsModule, Footer],   // ✅ necessário para ngModel
   templateUrl: './goal-register.component.html',
   styleUrls: ['./goal-register.component.scss']
 })

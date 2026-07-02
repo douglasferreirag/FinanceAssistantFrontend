@@ -2,11 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, ChangeDetectorRef } from '@angular/core'; // 👈 Importe o ChangeDetectorRef
 import { FormsModule } from '@angular/forms';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 @Component({
   selector: 'app-analysisexpense',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, Footer],
   templateUrl: './analysimonthexpense.html',
   styleUrls: ['./analysimonthexpense.scss'],
 })

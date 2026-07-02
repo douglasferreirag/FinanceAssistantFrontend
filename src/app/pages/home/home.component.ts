@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 
 @Component({
   selector: 'app-home',
   standalone: true, // ✅ standalone component
-  imports: [ FormsModule], // ✅ habilita ngIf, ngFor e ngModel
+  imports: [FormsModule, Footer], // ✅ habilita ngIf, ngFor e ngModel
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

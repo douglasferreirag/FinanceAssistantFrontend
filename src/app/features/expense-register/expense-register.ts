@@ -4,6 +4,7 @@ import { Expense } from '../../models/expense.model';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 
 
@@ -12,7 +13,7 @@ import { NavigationService } from '../../utils/NavigationService';
 @Component({
   selector: 'app-expense-form',
   standalone: true,
-  imports: [FormsModule],   // ✅ necessário para ngModel
+  imports: [FormsModule, Footer],   // ✅ necessário para ngModel
   templateUrl: './expense-register.component.html',
   styleUrls: ['./expense-register.component.scss']
 })

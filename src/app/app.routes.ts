@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './features/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { ExpenseRegisterComponent } from './features/expense-register/expense-register';
 import { ExpenseListComponent } from './features/expense-list/expense-list';
 import { AnalysiMonthExpenseComponent } from './features/analysimonthexpense/analysimonthexpense';

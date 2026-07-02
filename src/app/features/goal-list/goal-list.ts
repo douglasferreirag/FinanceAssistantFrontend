@@ -4,12 +4,13 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { NavigationService } from '../../utils/NavigationService';
+import { Footer } from "../../layout/footer/footer";
 
 
 
 @Component({
   selector: 'app-goal-list',
-  imports: [CommonModule],
+  imports: [CommonModule, Footer],
   templateUrl: './goal-list.html',
   styleUrl: './goal-list.scss',
 })
