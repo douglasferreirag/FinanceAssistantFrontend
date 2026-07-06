@@ -1,0 +1,74 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">Assistente Financeiro</div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="navigation.goTo('')">
+            🏠 Página inicial
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button" (click)="fetchExpenses()">
+            📋 Exibir Dados
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button">
+            🧾 Exportar tabela
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Body -->
+  <main class="site-body">
+    <section class="content">
+      <div class="analysis-layout">
+
+        <!-- Lista de gastos -->
+        <aside class="form-aside">
+          <div class="expense-container">
+            <h2 class="expense-title">🗒️ Lista Geral de Gastos</h2>
+
+            <div class="expense-body">
+              <table class="table">
+                <thead class="table-head">
+                  <tr class="table-row table-row-head">
+                    <th class="table-cell table-cell-head">Descrição</th>
+                    <th class="table-cell table-cell-head">Valor</th>
+                    <th class="table-cell table-cell-head">Data</th>
+                    <th class="table-cell table-cell-head">Categoria</th>
+                  </tr>
+                </thead>
+                <tbody class="table-body">
+                  @for (expense of expenses$ | async; track expense.id) {
+                    <tr class="table-row">
+                      <td class="table-cell">{{ expense.description }}</td>
+                      <td class="table-cell">{{ expense.cost | currency:'BRL' }}</td>
+                      <td class="table-cell">{{ expense.expenseDate | date:'shortDate' }}</td>
+                      <td class="table-cell">{{ expense.category.name }}</td>
+                    </tr>
+                  }
+
+                  @if ((expenses$ | async)?.length === 0) {
+                    <tr class="table-row table-row-empty">
+                      <td colspan="4" class="table-cell table-cell-empty">
+                        Nenhum gasto listado ainda.
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <app-footer> </app-footer>
+
+</div>

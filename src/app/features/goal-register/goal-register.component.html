@@ -1,0 +1,13 @@
+<app-goal-register-header
+  (save)="onSubmit(goalForm)"
+  (clear)="onClear()"
+  (home)="goHome()">
+</app-goal-register-header>
+
+<app-goal-register-body
+  [goal]="goal"
+  (submitGoal)="onSubmit($event)"
+  (clearGoal)="onClear()">
+</app-goal-register-body>
+
+<app-footer></app-footer>

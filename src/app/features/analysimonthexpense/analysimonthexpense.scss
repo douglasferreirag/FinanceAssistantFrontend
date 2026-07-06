@@ -1,0 +1,90 @@
+.site-body {
+  background: url('../../../assets/analise.jpeg') center center / cover no-repeat;
+}
+
+
+.analysis-layout {
+  display:flex;
+  gap: 2rem;
+  width: 100%;
+  align-items: stretch; /* força os dois a terem a mesma altura */
+}
+
+/* Chatbot */
+.chatbot-aside {
+  width: 320px;
+  min-width: 280px;
+  background: linear-gradient(180deg, #0078d7, #005a9e);
+  color: #fff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+  border-radius: 12px;
+
+  /* controla posição */
+  order: 0; /* chatbot à esquerda */
+  /* se quiser à direita, basta trocar para order: 1 */
+
+  h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0.5rem 0 1rem;
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  .chat-window {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+
+    .message {
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      line-height: 1.4;
+      font-size: 0.9rem;
+      max-width: 85%;
+    }
+
+    .message.agent {
+      background: rgba(255,255,255,0.2);
+      align-self: flex-start;
+    }
+
+    .message.user {
+      background: #fff;
+      color: #333;
+      align-self: flex-end;
+    }
+  }
+}
+
+/* Formulário */
+.form-aside {
+  flex: 1;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .analysisexpense-layout {
+    flex-direction: column;
+  }
+
+  .chatbot-aside {
+    width: 100%;
+    min-width: unset;
+    box-shadow: none;
+    border-bottom: 2px solid #005a9e;
+  }
+}

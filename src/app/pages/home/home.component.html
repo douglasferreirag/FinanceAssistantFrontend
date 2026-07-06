@@ -1,0 +1,42 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <h3 class="logo">Assistente Financeiro</h3>
+      <ul class="nav-links">
+        <!-- Menu Expenses -->
+        <li class="nav-item dropdown">
+          <button class="nav-link">💸 Gastos</button>
+          <ul class="dropdown-menu">
+            <li><button (click)="navigation.goTo('register-expense')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-expenses')">📋 Listagem</button></li>
+            <li><button (click)="navigation.goTo('expense-graphic')">� Gráficos</button></li>
+            <li><button (click)="navigation.goTo('analyze-expenses')">📊 Análise</button></li>
+          </ul>
+        </li>
+
+        <!-- Menu Goals -->
+        <li class="nav-item dropdown">
+          <button class="nav-link">🎯 Metas</button>
+          <ul class="dropdown-menu">
+            <li><button (click)="navigation.goTo('register-goal')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-goals')">📋 Listagem</button></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Body -->
+  <main class="site-body">
+    <aside class="image-aside">
+      <div class="image-wrapper"></div>
+    </aside>
+    <section class="content">
+      <!-- Main content goes here -->
+    </section>
+  </main>
+
+  <app-footer> </app-footer>
+
+</div>

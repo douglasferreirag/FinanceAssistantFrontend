@@ -1,0 +1,65 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <header class="site-header">
+    <nav class="navbar">
+      <div class="logo">Assistente Financeiro</div>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="nav-link btn-light" type="button" (click)="navigation.goTo('')">
+            🏠 Página inicial
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button" (click)="generateGraphic('bar')">
+             Gráfico de barras
+          </button>
+        </li>
+         <li class="nav-item">
+          <button class="nav-link" type="button" (click)="generateGraphic('line')">
+             Gráfico de linhas
+          </button>
+        </li>
+         <li class="nav-item">
+          <button class="nav-link" type="button" (click)="generateGraphic('pie')">
+            📋 Gráfico de pizza
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button" (click)="generateGraphic('doughnut')">
+            📋 Gráfico de rosca
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" type="button" (click)="generateGraphic('radar')">
+            📋 Gráfico de radar
+          </button>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Body -->
+  <main class="site-body">
+    <section class="content">
+      <div class="analysis-layout">
+
+        <!-- Área do graphic -->
+        <aside class="graphic-aside">
+          <div class="graphic-container">
+            <h2 class="graphic-title">📊 Visão gráfica dos gastos</h2>
+            <div class="graphic-body">
+              <!-- Canvas onde o Chart.js será renderizado -->
+              <canvas id="expensesChart" ></canvas>
+            </div>
+          </div>
+        </aside>
+
+
+      </div>
+    </section>
+  </main>
+
+  <app-footer> </app-footer>
+
+</div>

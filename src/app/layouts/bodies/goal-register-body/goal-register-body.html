@@ -1,0 +1,18 @@
+<div class="form-container">
+  <form (ngSubmit)="onSubmit(goalForm)" #goalForm="ngForm" id="goalForm" class="form-body">
+    <div class="form-group">
+      <label for="month" class="form-label">Month</label>
+      <input id="month" type="number" [(ngModel)]="goal.month" name="month" class="form-control" placeholder="Digite o mês" required>
+    </div>
+
+    <div class="form-group">
+      <label for="year" class="form-label">Year</label>
+      <input id="year" type="number" [(ngModel)]="goal.year" name="year" class="form-control" placeholder="Digite o ano" required>
+    </div>
+
+    <div class="form-group">
+      <label for="limitValue" class="form-label">Expense Limit</label>
+      <input id="limitValue" type="number" [(ngModel)]="goal.limit_value" name="limit_value" class="form-control" placeholder="Digite o limite de gastos" required>
+    </div>
+  </form>
+</div>
