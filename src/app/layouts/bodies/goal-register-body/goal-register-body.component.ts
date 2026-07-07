@@ -16,7 +16,7 @@ export class GoalRegisterBodyComponent {
   @Output() submitGoal = new EventEmitter<any>();
   @Output() clearGoal = new EventEmitter<void>();
 
-  //@ViewChild('goalForm') goalForm!: NgForm;
+  
 
   onSubmit(form: NgForm) {
     this.submitGoal.emit(this.goal);

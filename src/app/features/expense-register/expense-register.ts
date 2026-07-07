@@ -1,43 +1,37 @@
-import { SpeechService } from '../../utils/SpeechService';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { Expense } from '../../models/expense.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavigationService } from '../../utils/NavigationService';
 import { Footer } from "../../layouts/footer/footer";
-
-
-
-
+import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header";
+import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body";
 
 @Component({
   selector: 'app-expense-form',
   standalone: true,
-  imports: [FormsModule, Footer],   // ✅ necessário para ngModel
+  imports: [FormsModule, Footer, ExpenseRegisterHeaderComponent, ExpenseRegisterBodyComponent],
   templateUrl: './expense-register.component.html',
   styleUrls: ['./expense-register.component.scss']
 })
-
-
-
 export class ExpenseRegisterComponent {
 
-
   expense: Expense = {
-    description: '', cost: 0, expenseDate: '', category: { id: 0, name: '' }
+    description: '',
+    cost: 0,
+    expenseDate: new Date().toISOString().split('T')[0], // formato YYYY-MM-DD,
+    category: { id: 0, name: '' }
   };
 
-  textoFalado = ''
+  @ViewChild(ExpenseRegisterBodyComponent) expenseBody!: ExpenseRegisterBodyComponent;
+  @ViewChild('expenseForm') expenseForm!: NgForm
 
-  // evento para avisar o chat quando terminar
   @Output() closed = new EventEmitter<void>();
 
   constructor(private http: HttpClient,
-              public navigation: NavigationService
-              ) {}
+              public navigation: NavigationService) {}
 
-
-  onSubmit() {
+  onSubmit(expenseForm: any) {
     const categoryPayload = { name: this.expense.category.name };
     const expensePayload = {
       description: this.expense.description,
@@ -46,17 +40,14 @@ export class ExpenseRegisterComponent {
       category: this.expense.category
     };
 
-    // 1. Cadastra/verifica categoria
     this.http.post<any>('http://localhost:8080/api/categories/save', categoryPayload).subscribe({
       next: (catRes) => {
         console.log('Categoria verificada/cadastrada:', catRes);
 
-        // 2. Só depois cadastra o gasto
         this.http.post<any>('http://localhost:8080/api/expenses/save', expensePayload).subscribe({
           next: (res) => {
             alert(`✅ Gasto cadastrado com sucesso: ${res.reply || 'OK'}`);
-            this.expense = { description: '', cost: 0, expenseDate: '', category: { id: 0, name: '' } };
-
+            this.onClear(); // limpa após salvar
           },
           error: (err) => {
             console.error(err);
@@ -69,12 +60,21 @@ export class ExpenseRegisterComponent {
         alert("⚠️ Erro ao cadastrar categoria.");
       }
     });
+  }
+
+  onClear() {
+    // basta redefinir o objeto, os inputs limpam via ngModel
+    this.expense =  {
+        description: '',
+        cost: 0,
+        expenseDate: new Date().toISOString().split('T')[0], // formato YYYY-MM-DD,
+        category: { id: 0, name: '' }
+    };
 
 
   }
 
-
-
-
-
+  goHome() {
+    this.navigation.goTo('');
+  }
 }

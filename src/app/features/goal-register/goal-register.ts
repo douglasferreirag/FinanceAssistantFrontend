@@ -64,7 +64,7 @@ export class GoalRegisterComponent {
 
     onClear() {
 
-      
+
 
            this.goal = {
                   month: new Date().getMonth() + 1,
@@ -72,10 +72,6 @@ export class GoalRegisterComponent {
                   limit_value: 0,
 
                 };
-
-
-
-
 
 
     }
