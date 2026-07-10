@@ -1,0 +1,14 @@
+<div class="form-container">
+  <h2 class="form-title">💸 Cadastro de categorias</h2>
+
+  <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" id="categoryForm" class="form-body">
+    <div class="form-group">
+      <label for="description" class="form-label">nome</label>
+      <input id="description" [(ngModel)]="category.name" name="name" class="form-control" required>
+    </div>
+
+
+
+
+  </form>
+</div>

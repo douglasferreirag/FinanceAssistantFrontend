@@ -23,8 +23,28 @@
             <li><button (click)="navigation.goTo('list-goals')">📋 Listagem</button></li>
           </ul>
         </li>
+
+        <!-- Menu Goals -->
+        <li class="nav-item dropdown">
+          <button class="nav-link">📦 Metas</button>
+          <ul class="dropdown-menu">
+            <li><button (click)="navigation.goTo('register-goal')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-goals')">📋 Listagem</button></li>
+          </ul>
+        </li>
+
+        <!-- Menu Categories -->
+        <li class="nav-item dropdown">
+          <button class="nav-link">📦 Categorias</button>
+          <ul class="dropdown-menu">
+            <li><button (click)="navigation.goTo('register-category')">➕ Cadastro</button></li>
+            <li><button (click)="navigation.goTo('list-categories')">📋 Listagem</button></li>
+          </ul>
+        </li>
+
+
       </ul>
-    </nav>
+  </nav>
   </header>
 
   <!-- Body -->

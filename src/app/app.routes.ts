@@ -6,6 +6,7 @@ import { AnalysiMonthExpenseComponent } from './features/analysimonthexpense/ana
 import { GoalRegisterComponent } from './features/goal-register/goal-register';
 import { GoalListComponent } from './features/goal-list/goal-list';
 import { ExpenseGraphicComponent } from './features/expensedashgraphic/expensegraphic';
+import { CategoryRegisterComponent } from './features/category-register/category-register';
 
 
 export const routes: Routes = [
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: 'register-expense',
     component: ExpenseRegisterComponent
+  },
+  {
+    path: 'register-category',
+    component: CategoryRegisterComponent
   },
    {
     path: 'register-goal',
