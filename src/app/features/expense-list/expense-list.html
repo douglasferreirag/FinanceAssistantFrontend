@@ -11,7 +11,7 @@
       <td class="table-cell">{{ expense.description }}</td>
       <td class="table-cell">{{ expense.cost | currency:'BRL' }}</td>
       <td class="table-cell">{{ expense.expenseDate | date:'shortDate' }}</td>
-      <td class="table-cell">{{ expense.category?.id || 'Sem categoria' }}</td>
+      <td class="table-cell">{{ expense.category.id }}</td>
     </tr>
   }
 

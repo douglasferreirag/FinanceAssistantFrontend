@@ -17,11 +17,20 @@
       <input id="expenseDate" type="date" [(ngModel)]="expense.expenseDate" name="expenseDate" class="form-control" required>
     </div>
 
-    <div class="form-group">
+   <div class="form-group">
       <label for="category" class="form-label">Category</label>
-      <input id="category" [(ngModel)]="expense.category.name" name="category" class="form-control" required>
+      <select id="category"
+              [(ngModel)]="categoryNameSelected"
+              name="category_id"
+              class="form-control"
+              required
+              (change)="onCategoryChange()">
+        <option [ngValue]="0">Selecione uma categoria</option>
+        <option *ngFor="let name of categoriesName" [ngValue]="name">
+          {{ name }}
+        </option>
+      </select>
     </div>
-
 
   </form>
 </div>

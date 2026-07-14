@@ -35,7 +35,7 @@ export class CategoryRegisterComponent {
       next: (catRes) => {
         console.log('✅ Categoria verificada/cadastrada:', catRes);
         alert(`Categoria cadastrada com sucesso: ${catRes.reply || 'OK'}`);
-        this.onClear(); // limpa após salvar
+        
       },
       error: (err) => {
         console.error(err);
