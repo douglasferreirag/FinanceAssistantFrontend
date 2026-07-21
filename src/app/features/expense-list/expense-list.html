@@ -1,27 +1,11 @@
 <app-expense-list-header
   (home)="goHome()"
-  (render)="renderExpenses()"
-  (export)="exportTable()">
+  (export)="exportTable()"
+  (render)="onRenderExpenses()">
 </app-expense-list-header>
 
 <app-expense-list-body
   [expenses]="expenses">
-  @for (expense of expenses; track expense.id) {
-    <tr class="table-row">
-      <td class="table-cell">{{ expense.description }}</td>
-      <td class="table-cell">{{ expense.cost | currency:'BRL' }}</td>
-      <td class="table-cell">{{ expense.expenseDate | date:'shortDate' }}</td>
-      <td class="table-cell">{{ expense.category.id }}</td>
-    </tr>
-  }
-
-  @if (expenses.length === 0) {
-    <tr class="table-row table-row-empty">
-      <td colspan="4" class="table-cell table-cell-empty">
-        Nenhum gasto listado ainda.
-      </td>
-    </tr>
-  }
 </app-expense-list-body>
 
 <app-footer></app-footer>

@@ -9,15 +9,18 @@
             <table class="table">
               <thead class="table-head">
                 <tr class="table-row table-row-head">
-                  <th class="table-cell table-cell-head">Descrição</th>
-                  <th class="table-cell table-cell-head">Valor</th>
-                  <th class="table-cell table-cell-head">Data</th>
-                  <th class="table-cell table-cell-head">Categoria</th>
+                  <!-- Cabeçalho alinhado igual às células -->
+                  <th class="table-cell table-cell-head table-cell-description">Descrição</th>
+                  <th class="table-cell table-cell-head table-cell-date">Data</th>
+                  <th class="table-cell table-cell-head table-cell-value">Valor</th>
                 </tr>
               </thead>
               <tbody class="table-body">
-                <!-- Pai injeta aqui -->
-                <ng-content></ng-content>
+                <tr *ngFor="let e of expenses" class="table-row">
+                  <td class="table-cell table-cell-description">{{ e.description }}</td>
+                  <td class="table-cell table-cell-date">{{ e.expenseDate | date:'dd/MM/yyyy' }}</td>
+                  <td class="table-cell table-cell-value">{{ e.cost | currency:'BRL' }}</td>
+                </tr>
               </tbody>
             </table>
           </div>

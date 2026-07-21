@@ -25,53 +25,85 @@ export class ExpenseListComponent {
   ) {}
 
   // Método 1: busca os dados no backend
-  private fetchFromDatabase(): Promise<Expense[]> {
-    return new Promise((resolve, reject) => {
-      this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll').subscribe({
+   importExpenses(): void {
+      this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
+        .subscribe({
+          next: (res) => {
+            // atribui um novo array, não muta o existente
+            this.expenses = [...res];
+            console.log('Gastos importados:', this.expenses);
+            this.cdr.detectChanges(); // ✅ força atualização imediata
+            this.loading = false;
+          },
+          error: (err) => {
+            if (err.name === 'AbortError') {
+              console.log('⚠️ Requisição cancelada (AbortError), sem impacto.');
+            } else {
+              console.log('Erro ao importar gastos', err);
+            }
+            this.loading = false;
+            this.expenses = [];
+          }
+        });
+
+  }
+
+
+
+  exportTable(): void {
+    this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
+      .subscribe({
         next: (res) => {
-          console.log('Dados recebidos:', res);
-          resolve(res);
+          // Cabeçalho
+          const header = ["Descrição", "Data", "Valor"];
+
+          // Linhas de dados
+          const rows = res.map(expense => {
+            const descricao = expense.description ?? "";
+            const data = new Date(expense.expenseDate).toLocaleDateString("pt-BR");
+            const valor = (expense.cost ?? 0).toLocaleString("pt-BR", {
+              style: "currency",
+              currency: "BRL"
+            });
+            return [descricao, data, valor];
+          });
+
+          // Monta o CSV célula a célula
+          let csvContent = "";
+          csvContent += header.join(";") + "\n"; // separador ; para abrir direto no Excel BR
+          rows.forEach(row => {
+            csvContent += row.join(";") + "\n";
+          });
+
+          // Cria o blob
+          const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+          const url = URL.createObjectURL(blob);
+
+          // Cria o link para download
+          const link = document.createElement("a");
+          link.href = url;
+          link.setAttribute("download", "data/gastos_exportados.csv");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          console.log("✅ Exportação concluída!");
         },
         error: (err) => {
-          console.error('Erro ao buscar gastos', err);
-          reject(err);
+          console.error("Erro ao exportar gastos", err);
         }
       });
-    });
   }
 
- renderExpenses(): void {
-    if (this.loading) return; // evita múltiplos cliques
-    this.loading = true;
 
-    this.fetchFromDatabase()
-      .then((data) => {
-        this.expenses = data || [];
-        this.loading = false;
-      })
-      .catch(() => {
-        this.expenses = [];
-        this.loading = false;
-      });
-  }
 
-  exportTable() {
-    if (!this.expenses || this.expenses.length === 0) {
-      alert("⚠️ Nenhum dado para exportar.");
-      return;
-    }
 
-    const header = "Descrição,Valor,Data,Categoria";
-    const rows = this.expenses.map(e =>
-      `${e.description},${e.cost},${e.expenseDate},${e.category.id || 'Sem categoria'}`
-    );
-    const csvContent = header + "\n" + rows.join("\n");
 
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "expenses.csv";
-    link.click();
+
+
+  onRenderExpenses() {
+    this.importExpenses();
+    console.log(this.expenses);
   }
 
   goHome() {

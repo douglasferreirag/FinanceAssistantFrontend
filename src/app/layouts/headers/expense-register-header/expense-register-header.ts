@@ -10,4 +10,5 @@ export class ExpenseRegisterHeaderComponent {
   @Output() clear = new EventEmitter<void>();
   @Output() home = new EventEmitter<void>();
   @Output() importCategories = new EventEmitter<void>();
+ 
 }
