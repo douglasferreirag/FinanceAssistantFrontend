@@ -10,6 +10,6 @@ export class ExpenseListHeaderComponent {
   @Output() render = new EventEmitter<void>();
   @Output() export = new EventEmitter<void>();
 
-   // Recebe do pai o estado de carregamento
+  // Recebe do pai o estado de carregamento
   @Input() loading = false;
 }

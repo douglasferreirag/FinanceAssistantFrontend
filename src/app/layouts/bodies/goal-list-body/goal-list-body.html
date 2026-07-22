@@ -3,7 +3,7 @@
     <div class="analysis-layout">
       <aside class="form-aside">
         <div class="form-container">
-          <h2 class="expense-title">🗒️ Lista Geral de Gastos</h2>
+          <h2 class="goal-title">🗒️ Lista Geral de Metas</h2>
 
           <div class="form-body">
             <table class="table">
@@ -16,10 +16,10 @@
                 </tr>
               </thead>
               <tbody class="table-body">
-                <tr *ngFor="let e of expenses" class="table-row">
-                  <td class="table-cell table-cell-description">{{ e.description }}</td>
-                  <td class="table-cell table-cell-date">{{ e.expenseDate | date:'dd/MM/yyyy' }}</td>
-                  <td class="table-cell table-cell-value">{{ e.cost | currency:'BRL' }}</td>
+                <tr *ngFor="let g of goals" class="table-row">
+                  <td class="table-cell table-cell-description">{{ g.month }}</td>
+                  <td class="table-cell table-cell-date">{{ g.year}}</td>
+                  <td class="table-cell table-cell-value">{{ g.limit_value  }}</td>
                 </tr>
               </tbody>
             </table>

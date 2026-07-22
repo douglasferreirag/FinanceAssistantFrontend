@@ -25,26 +25,26 @@ export class ExpenseListComponent {
   ) {}
 
   // Método 1: busca os dados no backend
-   importExpenses(): void {
-      this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
-        .subscribe({
-          next: (res) => {
-            // atribui um novo array, não muta o existente
-            this.expenses = [...res];
-            console.log('Gastos importados:', this.expenses);
-            this.cdr.detectChanges(); // ✅ força atualização imediata
-            this.loading = false;
-          },
-          error: (err) => {
-            if (err.name === 'AbortError') {
-              console.log('⚠️ Requisição cancelada (AbortError), sem impacto.');
-            } else {
-              console.log('Erro ao importar gastos', err);
+  importExpenses(): void {
+        this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
+          .subscribe({
+            next: (res) => {
+              // atribui um novo array, não muta o existente
+              this.expenses = [...res];
+              console.log('Gastos importados:', this.expenses);
+              this.cdr.detectChanges(); // ✅ força atualização imediata
+              this.loading = false;
+            },
+            error: (err) => {
+              if (err.name === 'AbortError') {
+                console.log('⚠️ Requisição cancelada (AbortError), sem impacto.');
+              } else {
+                console.log('Erro ao importar gastos', err);
+              }
+              this.loading = false;
+              this.expenses = [];
             }
-            this.loading = false;
-            this.expenses = [];
-          }
-        });
+          });
 
   }
 
@@ -96,14 +96,9 @@ export class ExpenseListComponent {
   }
 
 
-
-
-
-
-
   onRenderExpenses() {
     this.importExpenses();
-    console.log(this.expenses);
+
   }
 
   goHome() {
