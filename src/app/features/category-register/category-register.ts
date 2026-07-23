@@ -19,7 +19,7 @@ import { CategoryRegisterHeader } from "../../layouts/headers/category-register-
 export class CategoryRegisterComponent {
   category: Category = {
      id: 0,
-     name: '' 
+     name: ''
   };
 
   @ViewChild(CategoryRegisterBodyComponent) categoryBody!: CategoryRegisterBodyComponent;
@@ -35,7 +35,7 @@ export class CategoryRegisterComponent {
       next: (catRes) => {
         console.log('✅ Categoria verificada/cadastrada:', catRes);
         alert(`Categoria cadastrada com sucesso: ${catRes.reply || 'OK'}`);
-        
+
       },
       error: (err) => {
         console.error(err);

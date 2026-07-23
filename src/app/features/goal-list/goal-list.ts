@@ -28,7 +28,6 @@ export class GoalListComponent  {
   ) {}
 
 
-  goals$!: Observable<Goal[]>;
 
   // Método 1: busca os dados no backend
   importGoals(): void {
