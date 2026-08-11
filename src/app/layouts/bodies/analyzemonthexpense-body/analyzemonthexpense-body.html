@@ -1,0 +1,32 @@
+<main class="site-body">
+  <section class="content">
+    <div class="analysis-layout">
+
+      <!-- Formulário -->
+      <form (ngSubmit)="onSubmit()">
+        <label for="month">Mês</label>
+        <select id="month" [(ngModel)]="month" name="month" required>
+          <option *ngFor="let m of months" [value]="m.value">{{ m.label }}</option>
+        </select>
+
+        <label for="year">Ano</label>
+        <input id="year" type="number" [(ngModel)]="year" name="year" required>
+
+        <button type="submit">Confirmar Período</button>
+      </form>
+
+      <!-- Campos não editáveis -->
+      <div class="results">
+        <label>Meta:</label>
+        <input type="text" [value]="goal ?? ''" readonly>
+
+        <label>Total de Gastos:</label>
+        <input type="text" [value]="total ?? ''" readonly>
+
+        <label>Resultado:</label>
+        <input type="text" [value]="result ?? ''" readonly>
+      </div>
+
+    </div>
+  </section>
+</main>

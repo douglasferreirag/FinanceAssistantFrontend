@@ -1,6 +1,6 @@
 export interface Goal {
   id: number;
-  limit_value: number;
+  ceiling: number;
   month: number;
   year: number;
 

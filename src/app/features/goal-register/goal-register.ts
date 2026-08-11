@@ -22,7 +22,7 @@ export class GoalRegisterComponent {
   goal = {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
-    limit_value: 0,
+    ceiling: 0,
 
   };
 
@@ -42,7 +42,7 @@ export class GoalRegisterComponent {
         const goalPayload = {
           month: this.goal.month,
           year: this.goal.year,
-          limit_value: this.goal.limit_value,
+          ceiling: this.goal.ceiling,
 
         };
 
@@ -69,7 +69,7 @@ export class GoalRegisterComponent {
            this.goal = {
                   month: new Date().getMonth() + 1,
                   year: new Date().getFullYear(),
-                  limit_value: 0,
+                  ceiling: 0,
 
                 };
 

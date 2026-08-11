@@ -10,15 +10,15 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class CategoryRegisterBodyComponent {
 
   @Input() category: any;
-  @Output() submitCategory = new EventEmitter<any>();
-  @Output() clearCategory = new EventEmitter<void>();
+  @Output() submitAnalysis = new EventEmitter<any>();
+  @Output() clearAnalysis = new EventEmitter<void>();
 
   onSubmit(form: NgForm) {
-    this.submitCategory.emit(this.category);
+    this.submitAnalysis.emit(this.category);
   }
 
   onClear(form: NgForm) {
-    this.clearCategory.emit(); // avisa o pai
+    this.clearAnalysis.emit(); // avisa o pai
 
   }
 
