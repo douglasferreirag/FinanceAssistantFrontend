@@ -1,0 +1,16 @@
+<app-expense-register-header
+  (save)="onSubmit(expenseForm)"
+  (clear)="onClear()"
+  (home)="goHome()"
+  (importCategories)="onImportCategories()">
+</app-expense-register-header>
+
+<app-expense-register-body
+  [expense]="expense"
+  [categoriesName]="categoriesName"
+  (categorySelected)="onCategorySelected($event)">
+</app-expense-register-body>
+
+<app-footer> </app-footer>
+
+

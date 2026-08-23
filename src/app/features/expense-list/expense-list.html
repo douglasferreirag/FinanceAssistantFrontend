@@ -1,0 +1,11 @@
+<app-expense-list-header
+  (home)="goHome()"
+  (export)="exportTable()"
+  (render)="onRenderExpenses()">
+</app-expense-list-header>
+
+<app-expense-list-body
+  [expenses]="expenses">
+</app-expense-list-body>
+
+<app-footer></app-footer>

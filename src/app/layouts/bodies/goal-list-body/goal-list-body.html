@@ -1,0 +1,31 @@
+<main class="site-body">
+  <section class="content">
+    <div class="analysis-layout">
+      <aside class="form-aside">
+        <div class="form-container">
+          <h2 class="goal-title">🗒️ Lista Geral de Metas</h2>
+
+          <div class="form-body">
+            <table class="table">
+              <thead class="table-head">
+                <tr class="table-row table-row-head">
+                  <!-- Cabeçalho alinhado igual às células -->
+                  <th class="table-cell table-cell-head table-cell-description">Descrição</th>
+                  <th class="table-cell table-cell-head table-cell-date">Data</th>
+                  <th class="table-cell table-cell-head table-cell-value">Valor</th>
+                </tr>
+              </thead>
+              <tbody class="table-body">
+                <tr *ngFor="let g of goals" class="table-row">
+                  <td class="table-cell table-cell-description">{{ g.month }}</td>
+                  <td class="table-cell table-cell-date">{{ g.year}}</td>
+                  <td class="table-cell table-cell-value">{{ g.ceiling  }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
