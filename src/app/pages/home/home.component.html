@@ -1,63 +1,8 @@
 <div class="assistant-layout">
-  <!-- Header -->
-  <header class="site-header">
-    <nav class="navbar">
-      <h3 class="logo">Assistente Financeiro</h3>
-      <ul class="nav-links">
-        <!-- Menu Expenses -->
-        <li class="nav-item dropdown">
-          <button class="nav-link">💸 Gastos</button>
-          <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('register-expense')">➕ Cadastro</button></li>
-            <li><button (click)="navigation.goTo('list-expenses')">📋 Listagem</button></li>
-            <li><button (click)="navigation.goTo('expense-graphic')">� Gráficos</button></li>
-
-          </ul>
-        </li>
-
-        <!-- Menu Goals -->
-        <li class="nav-item dropdown">
-          <button class="nav-link">🎯 Metas</button>
-          <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('register-goal')">➕ Cadastro</button></li>
-            <li><button (click)="navigation.goTo('list-goals')">📋 Listagem</button></li>
-          </ul>
-        </li>
-
-
-        <!-- Menu Categories -->
-        <li class="nav-item dropdown">
-          <button class="nav-link">📦 Categorias</button>
-          <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('register-category')">➕ Cadastro</button></li>
-            <li><button (click)="navigation.goTo('list-categories')">📋 Listagem</button></li>
-          </ul>
-        </li>
-
-        <!-- Menu Análises -->
-        <li class="nav-item dropdown">
-          <button class="nav-link">� Análises</button>
-          <ul class="dropdown-menu">
-            <li><button (click)="navigation.goTo('analyze-expenses')">📊 Por mês</button></li>
-            <li><button (click)="navigation.goTo('analyze-expense-history')">📋 Histórico</button></li>
-          </ul>
-        </li>
-
-
-      </ul>
-  </nav>
-  </header>
-
-  <!-- Body -->
-  <main class="site-body">
-    <aside class="image-aside">
-      <div class="image-wrapper"></div>
-    </aside>
-    <section class="content">
-      <!-- Main content goes here -->
-    </section>
-  </main>
-
-  <app-footer> </app-footer>
-
+  <app-home-component-header (navigate)="onNavigate($event)"></app-home-component-header>
+  <app-home-component-body></app-home-component-body>
+  <app-footer></app-footer>
 </div>
+
+
+

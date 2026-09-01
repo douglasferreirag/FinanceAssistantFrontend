@@ -1,8 +1,13 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-category-list-header',
-  imports: [],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule
+  ],
   templateUrl: './category-list-header.html',
   styleUrl: './category-list-header.scss',
 })

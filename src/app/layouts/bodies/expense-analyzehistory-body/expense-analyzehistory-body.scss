@@ -1,0 +1,52 @@
+.chatbot-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: rgba(17, 24, 39, 0.85); // fundo escuro translúcido
+  color: #e0e7ff;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+}
+
+.chat-window {
+  background: rgba(31, 41, 55, 0.6);
+  border-radius: 12px;
+  padding: 1rem;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.chat-message {
+  margin-bottom: 0.8rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  animation: fadeIn 0.5s ease;
+
+  &.user {
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: #fff;
+    text-align: right;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+  }
+
+  &.bot {
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    color: #fff;
+    text-align: left;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  }
+}
+
+.chat-input {
+  flex: 1;
+  margin-right: 0.5rem;
+
+  input {
+    color: #e0e7ff;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

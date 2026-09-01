@@ -1,0 +1,15 @@
+/* Body */
+.site-body {
+  flex: 1;
+  display: flex;
+  min-height: calc(100vh - 149px);
+
+  /* aplica a imagem de fundo */
+  background: url('../../../../assets/home.png') center center / cover no-repeat;
+  background-attachment: fixed;
+
+  .content {
+    flex: 1;
+    padding: 1rem;
+  }
+}

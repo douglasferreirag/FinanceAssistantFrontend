@@ -1,3 +1,26 @@
-.site-body {
-  background: #f9fafb; // fundo clean e neutro para destacar os números
+:host {
+  display: block;
+  min-height: 100vh;
+
+  /* Fundo com imagem localizada em assets */
+  background: url('../../../assets/listagemgastos.png') no-repeat center center fixed;
+  background-size: cover;
+
+  /* Opcional: overlay escuro para dar contraste */
+  position: relative;
+}
+
+:host::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.7); /* camada escura translúcida */
+  z-index: 0;
+}
+
+.site-body,
+mat-card,
+.form-container {
+  position: relative;
+  z-index: 1; /* garante que os componentes fiquem acima do overlay */
 }

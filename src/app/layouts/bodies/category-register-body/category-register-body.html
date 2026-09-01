@@ -1,14 +1,18 @@
-<div class="form-container">
-  <h2 class="form-title">💸 Cadastro de categorias</h2>
+<mat-card class="form-container">
+  <mat-card-header>
+    <mat-card-title>💸 Cadastro de Categorias</mat-card-title>
+  </mat-card-header>
 
-  <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" id="categoryForm" class="form-body">
-    <div class="form-group">
-      <label for="description" class="form-label">nome</label>
-      <input id="description" [(ngModel)]="category.name" name="name" class="form-control" required>
-    </div>
+  <mat-card-content>
+    <form #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" id="categoryForm" class="form-body">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="category.name" name="name" required>
+        @if (categoryForm.submitted && categoryForm.controls['name']?.hasError('required')) {
+          <mat-error>O nome da categoria é obrigatório</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </mat-card-content>
 
-
-
-
-  </form>
-</div>
+</mat-card>

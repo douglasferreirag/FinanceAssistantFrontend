@@ -1,0 +1,29 @@
+<mat-toolbar color="primary" class="site-header">
+  <span class="logo">Assistente Financeiro</span>
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="expensesMenu">💸 Gastos</button>
+  <mat-menu #expensesMenu="matMenu">
+    <button mat-menu-item (click)="goTo('register-expense')">➕ Cadastro</button>
+    <button mat-menu-item (click)="goTo('list-expenses')">📋 Listagem</button>
+    <button mat-menu-item (click)="goTo('expense-graphic')">📊 Gráficos</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="goalsMenu">🎯 Metas</button>
+  <mat-menu #goalsMenu="matMenu">
+    <button mat-menu-item (click)="goTo('register-goal')">➕ Cadastro</button>
+    <button mat-menu-item (click)="goTo('list-goals')">📋 Listagem</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="categoriesMenu">📦 Categorias</button>
+  <mat-menu #categoriesMenu="matMenu">
+    <button mat-menu-item (click)="goTo('register-category')">➕ Cadastro</button>
+    <button mat-menu-item (click)="goTo('list-categories')">📋 Listagem</button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="analysisMenu">📊 Análises</button>
+  <mat-menu #analysisMenu="matMenu">
+    <button mat-menu-item (click)="goTo('analyze-expenses')">📊 Por mês</button>
+    <button mat-menu-item (click)="goTo('analyze-expense-history')">📋 Histórico</button>
+  </mat-menu>
+</mat-toolbar>

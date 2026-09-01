@@ -2,26 +2,25 @@
   <section class="content">
     <div class="analysis-layout">
       <aside class="form-aside">
-        <div class="form-container">
-          <h2 class="goal-title">🗒️ Lista Geral de Categorias</h2>
+        <mat-card class="form-container">
+          <mat-card-header>
+            <mat-card-title>🗒️ Lista Geral de Categorias</mat-card-title>
+          </mat-card-header>
 
-          <div class="form-body">
-            <table class="table">
-              <thead class="table-head">
-                <tr class="table-row table-row-head">
-                  <!-- Cabeçalho alinhado igual às células -->
-                  <th class="table-cell table-cell-head table-cell-name">Nome</th>
+          <mat-card-content>
+            <table mat-table [dataSource]="categories" class="mat-elevation-z2">
 
-                </tr>
-              </thead>
-              <tbody class="table-body">
-                <tr *ngFor="let c of categories" class="table-row">
-                      <td class="table-cell table-cell-name">{{ c.name }}</td>
-                </tr>
-              </tbody>
+              <!-- Nome Column -->
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nome </th>
+                <td mat-cell *matCellDef="let c"> {{ c.name }} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="['name']"></tr>
+              <tr mat-row *matRowDef="let row; columns: ['name'];"></tr>
             </table>
-          </div>
-        </div>
+          </mat-card-content>
+        </mat-card>
       </aside>
     </div>
   </section>

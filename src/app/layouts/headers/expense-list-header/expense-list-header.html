@@ -1,17 +1,17 @@
-<header class="site-header">
-  <nav class="navbar">
-    <div class="logo">Assistente Financeiro</div>
-    <ul class="nav-links">
-      <li class="nav-item">
-        <button class="nav-link btn-light" type="button" (click)="home.emit()">🏠 Página inicial</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" type="button" (click)="render.emit()" [disabled]="loading">📋 Exibir Dados</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" type="button" (click)="export.emit()">🧾 Exportar tabela</button>
-      </li>
+<mat-toolbar color="primary" class="site-header">
+  <span class="logo">Assistente Financeiro</span>
 
-    </ul>
-  </nav>
-</header>
+  <span class="spacer"></span>
+
+  <button mat-button (click)="home.emit()">
+    🏠 Página inicial
+  </button>
+
+  <button mat-raised-button color="accent" (click)="render.emit()" [disabled]="loading">
+    📋 Exibir Dados
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="export.emit()">
+    🧾 Exportar tabela
+  </button>
+</mat-toolbar>

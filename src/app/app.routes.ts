@@ -9,8 +9,8 @@ import { ExpenseGraphicComponent } from './features/expensedashgraphic/expensegr
 import { CategoryRegisterComponent } from './features/category-register/category-register';
 import { CategoryListComponent } from './features/category-list/category-list.component';
 
-import { AnalyzeHistoryExpenseComponent } from './features/analyzehistoryexpense/analyzehistoryexpense.component';
-import { AnalyzeMonthExpenseComponent } from './features/analyzemonthexpense/analyzemonthexpensecomponent';
+import { ExpenseAnalyzeHistoryComponent } from './features/expense-analyzehistory/expense-analyzehistory.component';
+import { ExpenseAnalyzeMonthComponent } from './features/expense-analyzemonth/expense-analyzemonth.component';
 
 
 export const routes: Routes = [
@@ -44,11 +44,11 @@ export const routes: Routes = [
   },
   {
     path: 'analyze-expenses',
-    component: AnalyzeMonthExpenseComponent
+    component: ExpenseAnalyzeMonthComponent
   },
   {
     path: 'analyze-expense-history',
-    component: AnalyzeHistoryExpenseComponent
+    component: ExpenseAnalyzeHistoryComponent
   },
   {
     path: 'expense-graphic',

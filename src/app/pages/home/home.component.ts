@@ -2,34 +2,29 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavigationService } from '../../utils/NavigationService';
 import { Footer } from "../../layouts/footer/footer";
+import { HomeComponentBody } from '../../layouts/bodies/home-component-body/home-component-body';
+import { HomeComponentHeader } from '../../layouts/headers/home-component-header/home-component-header';
+
 
 
 @Component({
   selector: 'app-home',
   standalone: true, // ✅ standalone component
-  imports: [FormsModule, Footer], // ✅ habilita ngIf, ngFor e ngModel
+  imports: [FormsModule, Footer, HomeComponentBody, HomeComponentHeader], // ✅ habilita ngIf, ngFor e ngModel
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-          messages: { from: string, text: string }[] = [];
-          userInput: string = '';
 
 
           constructor(public navigation: NavigationService) {}
 
-          openSection: string | null = null;
 
-          toggleSection(section: string) {
-            this.openSection = this.openSection === section ? null : section;
+          onNavigate(route: string) {
+             this.navigation.goTo(route);
           }
 
 
-
-          processConversation() {
-            this.messages.push({ from: 'user', text: this.userInput });
-            this.userInput = '';
-          }
 
 
 

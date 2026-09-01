@@ -12,5 +12,5 @@
   "include": [
     "src/**/*.d.ts",
     "src/**/*.spec.ts"
-  ]
+, "src/app/features/expense-analyzehistory/expense-analyzehistory.spec.ts", "src/app/features/expense-analyzemonth/expense-analyzemonth.spec.ts"  ]
 }

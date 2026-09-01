@@ -1,11 +1,16 @@
 import { Component, Input,EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-goal-register-header',
-  imports: [FormsModule],
+  imports: [
+    FormsModule,
+    MatToolbarModule,
+    MatButtonModule
+  ],
   templateUrl: './goal-register-header.html',
   styleUrl: './goal-register-header.scss',
 })

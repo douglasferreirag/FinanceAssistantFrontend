@@ -1,7 +1,12 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-expense-list-header',
+  imports: [
+    MatToolbarModule,
+    MatButtonModule
+  ],
   templateUrl: './expense-list-header.html',
   styleUrls: ['./expense-list-header.scss']
 })

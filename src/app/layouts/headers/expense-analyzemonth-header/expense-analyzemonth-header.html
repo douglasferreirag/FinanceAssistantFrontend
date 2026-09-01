@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="site-header">
+  <span class="logo">Assistente Financeiro</span>
+
+  <span class="spacer"></span>
+
+  <button mat-raised-button color="accent" (click)="importGoal.emit()">
+    🎯 Importar Meta
+  </button>
+
+  <button mat-raised-button color="primary" (click)="importTotal.emit()">
+    💰 Importar Total
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="clear.emit()">
+    🧹 Limpar
+  </button>
+
+  <button mat-button (click)="goHome.emit()">
+    🏠 Home
+  </button>
+
+  <button mat-raised-button color="secondary" [disabled]="!analyzeEnabled" (click)="analyze.emit()">
+    📑 Analisar
+  </button>
+</mat-toolbar>

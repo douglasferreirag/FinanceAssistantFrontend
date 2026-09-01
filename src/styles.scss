@@ -1,3 +1,41 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
 /* Layout principal */
 .assistant-layout {
   min-height: 100vh; /* ocupa toda a altura da tela */
@@ -76,94 +114,19 @@
   }
 }
 
-/* Body */
-.site-body {
-  flex: 1; /* ocupa o espaço entre header e footer */
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 2rem 3rem; /* mais respiro lateral */
-  margin: 0;
-  box-sizing: border-box;
-}
 
-/* Container geral do formulário */
-.form-container {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 3rem 2.5rem; /* aumentei o padding interno */
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-  box-sizing: border-box;
-}
 
-/* Corpo do formulário */
-.form-body {
-  display: flex;
-  flex-direction: column;
 
-  .form-group {
-    margin-bottom: 1.8rem;
-  }
 
-  .form-control {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid #d1d5db;
-    padding: 1rem;
-    font-size: 1rem;
-    color: #111827;
-    background-color: #f9fafb;
-    transition: all 0.2s ease;
-    margin-top: 0.5rem;   /* descola do label */
-    margin-bottom: 0.5rem;/* dá respiro entre inputs */
 
-    &::placeholder {
-      color: #9ca3af;
-      font-size: 0.9rem;
-    }
 
-    &:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
-      background-color: #fff;
-    }
-  }
-}
-
-/* Footer */
 .site-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+  font-size: 0.9rem;
   background: linear-gradient(90deg, #1e3a8a, #2563eb);
-  border-top: 1px solid #e5e7eb;
-  text-align: center;
-  padding: 0.8rem 1.2rem;
-  font-size: 0.85rem;
   color: #fff;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  position: relative; /* não sobrepõe mais o conteúdo */
-}
-
-/* Responsividade do footer */
-@media (max-width: 768px) {
-  .site-footer {
-    font-size: 0.75rem;
-    padding: 0.6rem;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer-link {
-    width: 100%;
-    text-align: center;
-  }
 }
 

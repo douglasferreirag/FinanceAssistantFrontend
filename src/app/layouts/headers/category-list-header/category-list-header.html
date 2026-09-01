@@ -1,15 +1,13 @@
-<header class="site-header">
-  <nav class="navbar">
-    <div class="logo">Assistente Financeiro</div>
-    <ul class="nav-links">
-      <li class="nav-item">
-        <button class="nav-link btn-light" type="button" (click)="home.emit()">🏠 Página inicial</button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" type="button" (click)="render.emit()" [disabled]="loading">📋 Exibir Dados</button>
-      </li>
+<mat-toolbar color="primary" class="site-header">
+  <span class="logo">Assistente Financeiro</span>
 
+  <span class="spacer"></span>
 
-    </ul>
-  </nav>
-</header>
+  <button mat-button (click)="home.emit()">
+    🏠 Página inicial
+  </button>
+
+  <button mat-raised-button color="accent" (click)="render.emit()" [disabled]="loading">
+    📋 Exibir Dados
+  </button>
+</mat-toolbar>

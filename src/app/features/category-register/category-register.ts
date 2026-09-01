@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
-import { Expense } from '../../models/expense.model';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgForm} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NavigationService } from '../../utils/NavigationService';
 import { CategoryRegisterBodyComponent } from '../../layouts/bodies/category-register-body/category-register-body';
@@ -17,6 +16,7 @@ import { CategoryRegisterHeader } from "../../layouts/headers/category-register-
   styleUrls: ['./category-register.scss']
 })
 export class CategoryRegisterComponent {
+
   category: Category = {
      id: 0,
      name: ''
@@ -28,7 +28,16 @@ export class CategoryRegisterComponent {
 
   constructor(private http: HttpClient, public navigation: NavigationService) {}
 
-  onSubmit(categoryForm: any) {
+  canSubmit = false;
+
+  
+  
+
+
+  onSubmit(event: any) {
+
+    console.log(this.category.name);
+    /*
     const categoryPayload = { name: this.category.name };
 
     this.http.post<any>('http://localhost:8080/api/categories/save', categoryPayload).subscribe({
@@ -41,7 +50,7 @@ export class CategoryRegisterComponent {
         console.error(err);
         alert("⚠️ Erro ao cadastrar categoria.");
       }
-    });
+    }); */
   }
 
 

@@ -1,17 +1,17 @@
-<!-- Header -->
-  <header class="site-header">
-    <nav class="navbar">
-      <h3 class="logo">Assistente Financeiro</h3>
-      <ul class="nav-links">
-        <li class="nav-item">
-          <button class="nav-link btn-primary" type="button" (click)="save.emit()">💾 Cadastrar</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn-light" type="button" (click)="clear.emit()">🧹 Limpar</button>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link btn-light" type="button" (click)="home.emit()">🏠 Página Inicial</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<mat-toolbar color="primary" class="site-header">
+  <span class="logo">Assistente Financeiro</span>
+
+  <span class="spacer"></span>
+
+  <button mat-raised-button color="accent" (click)="save.emit()">
+    💾 Cadastrar
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="clear.emit()">
+    🧹 Limpar
+  </button>
+
+  <button mat-button (click)="home.emit()">
+    🏠 Página Inicial
+  </button>
+</mat-toolbar>

@@ -7,6 +7,7 @@ import { Footer } from "../../layouts/footer/footer";
 import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header";
 import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body";
 import { Category } from '../../models/category.model';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
   selector: 'app-expense-form',
@@ -14,15 +15,17 @@ import { Category } from '../../models/category.model';
   imports: [FormsModule, Footer, ExpenseRegisterHeaderComponent, ExpenseRegisterBodyComponent],
   templateUrl: './expense-register.component.html',
   styleUrls: ['./expense-register.component.scss']
+
 })
+
 export class ExpenseRegisterComponent {
 
   expense: Expense = {
-    description: '',
-    cost: 0,
-    expenseDate: new Date().toISOString().split('T')[0], // formato YYYY-MM-DD,
-    category: {id: 0, name: ''} // referência à categoria
-  };
+  description: '',
+  cost: 0,
+  expenseDate: new Date(), // agora é um objeto Date
+  category: { id: 0, name: '' }
+};
 
   @ViewChild(ExpenseRegisterBodyComponent) expenseBody!: ExpenseRegisterBodyComponent;
   @ViewChild('expenseForm') expenseForm!: NgForm
@@ -71,7 +74,7 @@ export class ExpenseRegisterComponent {
     this.expense =  {
         description: '',
         cost: 0,
-        expenseDate: new Date().toISOString().split('T')[0], // formato YYYY-MM-DD,
+        expenseDate: new Date() , // formato YYYY-MM-DD,
         category: {id: 0, name: ''}
     };
     this.categoriesName = [];
