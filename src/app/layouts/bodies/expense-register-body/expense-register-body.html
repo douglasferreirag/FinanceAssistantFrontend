@@ -4,7 +4,7 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form #expenseForm="ngForm" (ngSubmit)="onSubmit(expenseForm)" id="expenseForm" class="form-body">
+    <form #expenseForm="ngForm" (ngSubmit)="submitExpense.emit(expense)" class="form-body">
 
       <!-- Descrição -->
       <mat-form-field appearance="outline" class="form-field">
@@ -15,13 +15,14 @@
       <!-- Valor -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Valor</mat-label>
-        <input matInput type="number" [(ngModel)]="expense.cost" name="cost" required>
+        <input matInput type="number" [(ngModel)]="expense.cost" name="cost" required step="0.01">
       </mat-form-field>
 
       <!-- Data com Datepicker -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Data</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="expense.expenseDate" name="expenseDate" required>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="expense.expenseDate"
+               name="expenseDate" required readonly>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -29,17 +30,13 @@
       <!-- Categoria -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Categoria</mat-label>
-        <mat-select [(ngModel)]="categoryNameSelected" name="category_id" required (selectionChange)="onCategoryChange()">
+        <mat-select [(ngModel)]="categoryNameSelected" name="category_id" required>
           <mat-option [value]="0">Selecione uma categoria</mat-option>
           <mat-option *ngFor="let name of categoriesName" [value]="name">
             {{ name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit">
-        Salvar Gasto
-      </button>
     </form>
   </mat-card-content>
 </mat-card>

@@ -1,16 +1,18 @@
 <app-expense-register-header
-  (save)="onSubmit(expenseForm)"
+  [canSubmit]="!!body.expenseForm?.valid"
+  (save)="onSubmit(body.expenseForm)"
   (clear)="onClear()"
   (home)="goHome()"
   (importCategories)="onImportCategories()">
 </app-expense-register-header>
 
 <app-expense-register-body
+  #body
   [expense]="expense"
   [categoriesName]="categoriesName"
-  (categorySelected)="onCategorySelected($event)">
+  (categorySelected)="onCategorySelected($event)"
+  (submitExpense)="onSubmit($event)"
+  (clearExpense)="onClear()">
 </app-expense-register-body>
 
-<app-footer> </app-footer>
-
-
+<app-footer></app-footer>

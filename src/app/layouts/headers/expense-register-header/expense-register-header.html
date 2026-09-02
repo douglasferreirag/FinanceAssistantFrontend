@@ -3,7 +3,7 @@
 
   <span class="spacer"></span>
 
-  <button mat-raised-button color="accent" (click)="save.emit()">
+  <button mat-raised-button color="accent" (click)="save.emit()" [disabled]="!canSubmit">
     💾 Cadastrar
   </button>
 

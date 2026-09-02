@@ -30,14 +30,9 @@ export class CategoryRegisterComponent {
 
   canSubmit = false;
 
-  
-  
-
 
   onSubmit(event: any) {
 
-    console.log(this.category.name);
-    /*
     const categoryPayload = { name: this.category.name };
 
     this.http.post<any>('http://localhost:8080/api/categories/save', categoryPayload).subscribe({
@@ -50,7 +45,7 @@ export class CategoryRegisterComponent {
         console.error(err);
         alert("⚠️ Erro ao cadastrar categoria.");
       }
-    }); */
+    });
   }
 
 
