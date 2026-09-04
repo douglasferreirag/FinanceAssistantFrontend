@@ -1,11 +1,11 @@
 <app-goal-register-header
-  (save)="onSubmit(goalForm)"
+  (save)="onSubmit(body.goalForm)"
   (clear)="onClear()"
   (home)="goHome()">
 </app-goal-register-header>
 
 <app-goal-register-body
-  [goal]="goal"
+  #body
   (submitGoal)="onSubmit($event)"
   (clearGoal)="onClear()">
 </app-goal-register-body>

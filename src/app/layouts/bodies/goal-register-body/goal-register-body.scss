@@ -6,20 +6,34 @@
   border: 1px solid #3b82f6;
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
   border-radius: 12px;
+  padding: 2rem; // 🔹 mais espaçamento interno
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // 🔹 centraliza verticalmente
 }
 
 mat-card-title {
   font-size: 1.2rem;
   font-weight: 700;
   color: #3b82f6;
+  text-align: center; // 🔹 título centralizado
+  margin-bottom: 1.5rem; // 🔹 espaço abaixo do título
+}
+
+mat-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // 🔹 centraliza horizontalmente
 }
 
 .form-field {
-  width: 100%;
+  width: 80%; // 🔹 ocupa 80% do card, centralizado
   margin-bottom: 1rem;
 }
 
-button {
-  font-weight: 600;
-  text-transform: uppercase;
+mat-card-actions {
+  display: flex;
+  justify-content: center; // 🔹 botões centralizados
+  gap: 1rem;
+  margin-top: 2rem; // 🔹 espaço entre campos e botões
 }

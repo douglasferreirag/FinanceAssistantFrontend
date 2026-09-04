@@ -1,23 +1,16 @@
-import { Component, Input,EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-goal-register-header',
-  imports: [
-    FormsModule,
-    MatToolbarModule,
-    MatButtonModule
-  ],
+  standalone: true,
+  imports: [MatToolbarModule, MatButtonModule],
   templateUrl: './goal-register-header.html',
-  styleUrl: './goal-register-header.scss',
+  styleUrls: ['./goal-register-header.scss']
 })
-export class GoalRegisterHeader {
-
+export class GoalRegisterHeaderComponent {
   @Output() save = new EventEmitter<void>();
   @Output() clear = new EventEmitter<void>();
   @Output() home = new EventEmitter<void>();
-
 }

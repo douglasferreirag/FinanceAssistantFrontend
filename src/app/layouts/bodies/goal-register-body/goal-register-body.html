@@ -4,29 +4,31 @@
   </mat-card-header>
 
   <mat-card-content>
-    <form (ngSubmit)="onSubmit(goalForm)" #goalForm="ngForm" id="goalForm" class="form-body">
+    <form #goalForm="ngForm" (ngSubmit)="onSubmit(goalForm)" class="form-body">
 
       <!-- Mês -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Mês</mat-label>
-        <input matInput type="number" [(ngModel)]="goal.month" name="month" placeholder="Digite o mês" required>
+        <mat-select [(ngModel)]="selectedMonthIndex" name="month" required (selectionChange)="onMonthChange()">
+          <mat-option *ngFor="let m of months; let i = index" [value]="i">
+            {{ m }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <!-- Ano -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Ano</mat-label>
-        <input matInput type="number" [(ngModel)]="goal.year" name="year" placeholder="Digite o ano" required>
+        <input matInput type="number" [(ngModel)]="goal.year" name="year" required>
       </mat-form-field>
 
       <!-- Valor limite -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Valor limite</mat-label>
-        <input matInput type="number" [(ngModel)]="goal.ceiling" name="ceiling" placeholder="Digite o limite de gastos" required>
+        <input matInput type="number" [(ngModel)]="goal.ceiling" name="ceiling" required>
       </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit">
-        Salvar Meta
-      </button>
     </form>
   </mat-card-content>
+
+  
 </mat-card>
