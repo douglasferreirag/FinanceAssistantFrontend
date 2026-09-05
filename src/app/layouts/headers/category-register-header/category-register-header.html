@@ -1,9 +1,11 @@
 <mat-toolbar color="primary" class="site-header">
+  <!-- Logo igual à home -->
   <span class="logo">Assistente Financeiro</span>
 
   <span class="spacer"></span>
 
-  <button mat-raised-button color="accent" (click)="save.emit()"  [disabled]="!canSubmit" >
+  <!-- Botões -->
+  <button mat-raised-button color="accent" (click)="save.emit()" [disabled]="!canSubmit">
     💾 Cadastrar
   </button>
 
