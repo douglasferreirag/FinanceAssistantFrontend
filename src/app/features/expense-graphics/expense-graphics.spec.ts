@@ -1,17 +1,17 @@
+import { ExpenseGraphicsComponent } from './expense-graphics';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Expensedashboard } from './expensedashboard';
 
-describe('Expensedashboard', () => {
-  let component: Expensedashboard;
-  let fixture: ComponentFixture<Expensedashboard>;
+describe('ExpenseGraphicsComponent', () => {
+  let component: ExpenseGraphicsComponent;
+  let fixture: ComponentFixture<ExpenseGraphicsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Expensedashboard],
+      imports: [ExpenseGraphicsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Expensedashboard);
+    fixture = TestBed.createComponent(ExpenseGraphicsComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

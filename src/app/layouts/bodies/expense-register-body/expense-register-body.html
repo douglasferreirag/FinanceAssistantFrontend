@@ -15,7 +15,15 @@
       <!-- Valor -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Valor</mat-label>
-        <input matInput type="number" [(ngModel)]="expense.cost" name="cost" required step="0.01">
+        <input matInput type="number"
+               [(ngModel)]="expense.cost"
+               name="cost"
+               required
+               step="0.01"
+               min="0"> <!-- 🔹 impede valores negativos -->
+        @if (expenseForm.submitted && expenseForm.controls['cost']?.hasError('min')) {
+          <mat-error>O valor não pode ser negativo</mat-error>
+        }
       </mat-form-field>
 
       <!-- Data com Datepicker -->
@@ -32,9 +40,11 @@
         <mat-label>Categoria</mat-label>
         <mat-select [(ngModel)]="categoryNameSelected" name="category_id" required>
           <mat-option [value]="0">Selecione uma categoria</mat-option>
-          <mat-option *ngFor="let name of categoriesName" [value]="name">
-            {{ name }}
-          </mat-option>
+          @for (name of categoriesName; track name) {
+            <mat-option [value]="name">
+              {{ name }}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
     </form>

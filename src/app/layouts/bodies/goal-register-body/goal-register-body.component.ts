@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, Output, EventEmitter, ViewChild, Input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,8 +23,16 @@ import { MatSelectModule } from '@angular/material/select';
   styleUrls: ['./goal-register-body.scss'],
 })
 export class GoalRegisterBodyComponent {
+
+  @Input() goal: any = {
+    month: new Date().getMonth() + 1,   // mês atual (1–12)
+    year: new Date().getFullYear(),     // ano atual
+    ceiling: 0                          // 🔹 valor limite default
+  };
+
   @Output() submitGoal = new EventEmitter<any>();
   @Output() clearGoal = new EventEmitter<void>();
+  @Output() monthSelected = new EventEmitter<string>();
 
   @ViewChild('goalForm') goalForm!: NgForm;
 
@@ -33,16 +41,11 @@ export class GoalRegisterBodyComponent {
     'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
   ];
 
-  // 🔹 Pré-seleciona mês e ano atuais
   selectedMonthIndex: number = new Date().getMonth(); // 0 = Janeiro
-  goal = {
-    month: this.selectedMonthIndex + 1, // converte para número do mês
-    year: new Date().getFullYear(),
-    ceiling: null
-  };
 
   onMonthChange() {
     this.goal.month = this.selectedMonthIndex + 1;
+    this.monthSelected.emit(this.months[this.selectedMonthIndex]);
   }
 
   onSubmit(form: NgForm) {
@@ -57,7 +60,7 @@ export class GoalRegisterBodyComponent {
     this.goal = {
       month: this.selectedMonthIndex + 1,
       year: new Date().getFullYear(),
-      ceiling: null
+      ceiling: 0
     };
     this.clearGoal.emit();
   }

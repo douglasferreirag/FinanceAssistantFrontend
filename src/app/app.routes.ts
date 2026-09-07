@@ -5,7 +5,7 @@ import { ExpenseListComponent } from './features/expense-list/expense-list';
 
 import { GoalRegisterComponent } from './features/goal-register/goal-register';
 import { GoalListComponent } from './features/goal-list/goal-list';
-import { ExpenseGraphicComponent } from './features/expensedashgraphic/expensegraphic';
+import { ExpenseGraphicsComponent } from './features/expense-graphics/expense-graphics';
 import { CategoryRegisterComponent } from './features/category-register/category-register';
 import { CategoryListComponent } from './features/category-list/category-list.component';
 
@@ -51,8 +51,8 @@ export const routes: Routes = [
     component: ExpenseAnalyzeHistoryComponent
   },
   {
-    path: 'expense-graphic',
-    component: ExpenseGraphicComponent
+    path: 'expense-graphics',
+    component: ExpenseGraphicsComponent
   },
 
 
