@@ -8,13 +8,17 @@
       <mat-card-content>
         <!-- Janela de chat -->
         <div class="chat-window">
-          <div *ngFor="let msg of messages" class="chat-message" [ngClass]="msg.sender">
-            <p>{{ msg.text }}</p>
-          </div>
+
+          @for (msg of messages; track msg) {
+            <div class="chat-message" [ngClass]="msg.sender">
+              <p>{{ msg.text }}</p>
+            </div>
+          }
+
         </div>
       </mat-card-content>
 
-      
+
     </mat-card>
   </section>
 </main>

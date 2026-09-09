@@ -8,11 +8,14 @@
 }
 
 .chat-window {
-  background: rgba(31, 41, 55, 0.6);
+  background: rgba(130, 131, 133, 0.6);
   border-radius: 12px;
   padding: 1rem;
-  max-height: 350px;
+  max-height: 500px;   // aumentei de 350px para 500px
+  min-height: 200px;   // garante altura mínima
   overflow-y: auto;
+  position: relative;
+  z-index: 2;
 }
 
 .chat-message {
@@ -30,11 +33,12 @@
   }
 
   &.bot {
-    background: linear-gradient(135deg, #10b981, #3b82f6);
+    background: linear-gradient(135deg, #10b981, #05398b);
     color: #fff;
     text-align: left;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+    box-shadow: 0 0 10px rgba(8, 236, 160, 0.8);
   }
+
 }
 
 .chat-input {

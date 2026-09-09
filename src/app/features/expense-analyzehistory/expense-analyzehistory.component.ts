@@ -15,7 +15,7 @@ export class ExpenseAnalyzeHistoryComponent {
 
   messages: { sender: string, text: string }[] = [];
   userMessage: string = '';
-  loading = false;
+  loading: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -23,15 +23,17 @@ export class ExpenseAnalyzeHistoryComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
+  
 
+  
 
   // evento de análise do histórico
-  onAnalyze() {
+ onAnalyze() {
     console.log("📊 Analisar histórico completo de gastos...");
     this.loading = true;
 
     // mensagem inicial no chatbot
-    this.messages.push({ sender: 'ai', text: '💬 Analisando histórico completo de gastos...' });
+    this.messages = [{ sender: 'bot', text: '💬 Analisando histórico completo de gastos...' }];
 
     this.http.post<string>(
       'http://localhost:8080/api/expenses/analyzeHistory',
@@ -40,19 +42,28 @@ export class ExpenseAnalyzeHistoryComponent {
     ).subscribe({
       next: (res) => {
         // resposta da IA
-        console.log(res);
-        this.messages.push({ sender: 'ai', text: res });
+        //console.log(typeof res);
+        this.messages = [...this.messages, { sender: 'bot', text: res }];
         this.cdr.detectChanges();
         this.loading = false;
       },
       error: (err) => {
         console.error('Erro ao analisar histórico', err);
-        this.messages.push({ sender: 'ai', text: "Erro ao analisar histórico de gastos." });
+
+        if (err.status === 429) {
+          // caso de limite de requisições
+          this.messages = [...this.messages, { sender: 'bot', text: "⚠️ Limite de acessos à IA atingido. Tente novamente mais tarde." }];
+        } else {
+          this.messages = [...this.messages, { sender: 'bot', text: "Erro ao analisar histórico de gastos." }];
+        }
+
         this.loading = false;
       }
     });
   }
 
+
+  
   onGoHome() {
       this.navigation.goTo('');
   }
