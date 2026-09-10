@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpenseRegisterBody } from './expense-register-body';
+import {ExpenseRegisterBodyComponent } from './expense-register-body';
 
 describe('ExpenseRegisterBody', () => {
-  let component: ExpenseRegisterBody;
-  let fixture: ComponentFixture<ExpenseRegisterBody>;
+  let component: ExpenseRegisterBodyComponent;
+  let fixture: ComponentFixture<ExpenseRegisterBodyComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExpenseRegisterBody],
+      imports: [ExpenseRegisterBodyComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ExpenseRegisterBody);
+    fixture = TestBed.createComponent(ExpenseRegisterBodyComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

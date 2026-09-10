@@ -58,7 +58,7 @@ export class ExpenseRegisterBodyComponent {
     this.dateAdapter.setLocale('pt-BR'); // força o formato brasileiro
   }
 
-  onCategoryChange() {
+  onCategorySelected(event: any) {
     this.categorySelected.emit(this.categoryNameSelected);
   }
 

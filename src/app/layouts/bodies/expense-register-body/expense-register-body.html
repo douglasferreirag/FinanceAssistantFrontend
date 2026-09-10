@@ -38,7 +38,12 @@
       <!-- Categoria -->
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Categoria</mat-label>
-        <mat-select [(ngModel)]="categoryNameSelected" name="category_id" required>
+        <mat-select 
+                [(ngModel)]="categoryNameSelected" 
+                name="category_id" 
+                required
+                (selectionChange)="onCategorySelected($event)"
+                >
           <mat-option [value]="0">Selecione uma categoria</mat-option>
           @for (name of categoriesName; track name) {
             <mat-option [value]="name">

@@ -1,3 +1,4 @@
+
 import { Component, Output, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Expense } from '../../models/expense.model';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -7,6 +8,7 @@ import { Footer } from "../../layouts/footer/footer";
 import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header";
 import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body";
 import { Category } from '../../models/category.model';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-expense-form',
@@ -20,7 +22,11 @@ export class ExpenseRegisterComponent {
   expense: Expense = {
     description: '',
     cost: 0,
-    expenseDate: new Date(),
+    expenseDate: new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    ),
     category: { id: 0, name: '' }
   };
 
@@ -38,17 +44,21 @@ export class ExpenseRegisterComponent {
 
   // 🔹 Agora o pai recebe o form do body
   onSubmit(form: NgForm) {
+
     if (!form.valid) {
       alert("⚠️ Preencha todos os campos obrigatórios antes de salvar.");
       return;
     }
 
+   
+
     const expensePayload = {
       description: this.expense.description,
       cost: this.expense.cost,
-      expenseDate: this.expense.expenseDate,
+      expenseDate: this.expense.expenseDate.toISOString().split('T')[0],
       category: this.category
     };
+
 
     this.http.post<any>('http://localhost:8080/api/expenses/save', expensePayload).subscribe({
       next: (res) => {
@@ -59,6 +69,13 @@ export class ExpenseRegisterComponent {
         alert("⚠️ Erro ao cadastrar gasto.");
       }
     });
+
+
+    
+
+
+
+
   }
 
   onClear() {
@@ -72,6 +89,7 @@ export class ExpenseRegisterComponent {
   }
 
   onCategorySelected(name: string) {
+
     this.getCategoryByName(name);
   }
 
