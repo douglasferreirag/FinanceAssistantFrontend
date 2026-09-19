@@ -11,6 +11,7 @@ import { CategoryListComponent } from './features/category-list/category-list.co
 
 import { ExpenseAnalyzeHistoryComponent } from './features/expense-analyzehistory/expense-analyzehistory.component';
 import { ExpenseAnalyzeMonthComponent } from './features/expense-analyzemonth/expense-analyzemonth.component';
+import { PersonRegisterComponent } from './features/person-register/person-register';
 
 
 export const routes: Routes = [
@@ -29,6 +30,10 @@ export const routes: Routes = [
    {
     path: 'register-goal',
     component: GoalRegisterComponent
+  },
+  {
+    path: 'register-person',
+    component: PersonRegisterComponent
   },
   {
     path: 'list-expenses',

@@ -26,4 +26,10 @@
     <button mat-menu-item (click)="goTo('analyze-expenses')">📊 Por mês</button>
     <button mat-menu-item (click)="goTo('analyze-expense-history')">📋 Histórico</button>
   </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="personMenu">👤 Pessoas</button>
+  <mat-menu #personMenu="matMenu">
+    <button mat-menu-item (click)="goTo('register-person')">➕ Cadastro</button>
+  </mat-menu>
+
 </mat-toolbar>

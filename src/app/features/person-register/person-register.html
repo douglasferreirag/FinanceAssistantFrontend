@@ -1,0 +1,24 @@
+<app-person-register-header>
+
+  [canSubmit]="!!body.personForm?.valid"
+  (save)="onSubmit(personForm)"
+  (clear)="onClear()"
+  (home)="goHome()"
+
+</app-person-register-header>
+
+<app-person-register-body>
+
+   #body
+  [person]="person"
+  (submitPerson)="onSubmit($event)"
+  (clearPerson)="onClear()"
+
+</app-person-register-body>
+
+<app-footer> 
+
+
+</app-footer>
+
+
