@@ -1,0 +1,11 @@
+executar: ng serve
+
+
+funcionando:
+
+category register
+person register
+goal register
+
+list categories
+list goals

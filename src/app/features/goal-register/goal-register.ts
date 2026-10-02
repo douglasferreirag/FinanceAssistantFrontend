@@ -16,6 +16,7 @@ import { GoalRegisterHeaderComponent } from "../../layouts/headers/goal-register
 export class GoalRegisterComponent {
 
   @ViewChild(GoalRegisterBodyComponent) goalBody!: GoalRegisterBodyComponent;
+  @ViewChild('goalForm') goalForm!: NgForm;
 
   goal = {
     month: new Date().getMonth() + 1,
@@ -27,12 +28,7 @@ export class GoalRegisterComponent {
 
   constructor(private http: HttpClient, public navigation: NavigationService) {}
 
-  onSubmit(form: NgForm | any) {
-    // ✅ agora só validamos ceiling > 0
-    if (this.goal.ceiling <= 0) {
-      alert("⚠️ O valor limite deve ser maior que zero.");
-      return;
-    }
+  onSubmit(event: any) {
 
     const goalPayload = {
       month: this.goal.month,
@@ -50,6 +46,7 @@ export class GoalRegisterComponent {
       }
     });
   }
+
 
   onClear() {
     if (this.goalBody.goalForm) {

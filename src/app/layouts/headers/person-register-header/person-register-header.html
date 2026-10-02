@@ -5,15 +5,15 @@
   <span class="spacer"></span>
 
   <!-- Botões -->
-  <button mat-raised-button color="accent" (click)="save.emit()" [disabled]="!canSubmit">
+  <button mat-raised-button color="accent" (click)="onSave()" [disabled]="!canSubmit">
     💾 Cadastrar
   </button>
 
-  <button mat-stroked-button color="warn" (click)="clear.emit()">
+  <button mat-stroked-button color="warn" (click)="onClear()">
     🧹 Limpar
   </button>
 
-  <button mat-button (click)="home.emit()">
+  <button mat-button (click)="onHome()">
     🏠 Página Inicial
   </button>
 </mat-toolbar>
