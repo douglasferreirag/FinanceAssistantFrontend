@@ -1,0 +1,20 @@
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  margin-left: 1rem;
+  font-weight: 600;
+}

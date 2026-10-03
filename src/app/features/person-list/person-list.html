@@ -1,0 +1,10 @@
+<app-person-list-header
+  (home)="goHome()"
+  (render)="onRenderPersons()">
+</app-person-list-header>
+
+<app-person-list-body
+  [persons]="persons">
+</app-person-list-body>
+
+<app-footer></app-footer>

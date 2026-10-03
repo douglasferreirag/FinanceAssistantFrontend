@@ -1,0 +1,15 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <app-expense-graphics-header
+    (goHome)="onGoHome()"
+    (generateGraphic)="onGenerateGraphic($event)">
+  </app-expense-graphics-header>
+
+  <!-- Body -->
+  <app-expense-graphics-body
+    (canvasReady)="onCanvasReady($event)">
+  </app-expense-graphics-body>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+</div>

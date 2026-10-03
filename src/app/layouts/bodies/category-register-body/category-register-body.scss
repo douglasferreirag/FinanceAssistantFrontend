@@ -1,0 +1,25 @@
+.form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: rgba(111, 241, 24, 0.9);
+  color: #e0e7ff;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  border-radius: 12px;
+}
+
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+button {
+  font-weight: 600;
+  text-transform: uppercase;
+}

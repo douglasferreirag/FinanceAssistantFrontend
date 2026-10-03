@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="site-header">
+  <!-- Logo igual à home -->
+  <span class="logo">Assistente Financeiro</span>
+
+  <span class="spacer"></span>
+
+  <!-- Botões -->
+  <button mat-button (click)="home.emit()">
+    🏠 Página Inicial
+  </button>
+
+  <button mat-raised-button color="accent" (click)="render.emit()" [disabled]="loading">
+    📋 Exibir Dados
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="export.emit()">
+    🧾 Exportar Tabela
+  </button>
+</mat-toolbar>

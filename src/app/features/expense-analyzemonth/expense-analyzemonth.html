@@ -1,0 +1,26 @@
+<app-expense-analyzemonth-header
+
+  (importGoal)="onImportGoal()"
+  (importTotal)="onImportTotal()"
+  (clear)="onClear()"
+  (goHome)="onGoHome()"
+  (analyze)="onAnalyze()"
+  [analyzeEnabled]="analyzeEnabled"
+>
+
+</app-expense-analyzemonth-header>
+
+<app-expense-analyzemonth-body
+
+  (submitForm)="onFormSubmit($event)"
+  [goal]="goal"
+  [total]="total"
+  [result]="result"
+
+
+>
+
+</app-expense-analyzemonth-body>
+
+
+<app-footer></app-footer>

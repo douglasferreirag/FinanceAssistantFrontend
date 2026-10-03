@@ -1,0 +1,57 @@
+<mat-card class="form-container">
+  <mat-card-header>
+    <mat-card-title>💸 Cadastro de Gastos</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #expenseForm="ngForm" (ngSubmit)="submitExpense.emit(expense)" class="form-body">
+
+      <!-- Descrição -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Descrição</mat-label>
+        <input matInput [(ngModel)]="expense.description" name="description" required>
+      </mat-form-field>
+
+      <!-- Valor -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Valor</mat-label>
+        <input matInput type="number"
+               [(ngModel)]="expense.cost"
+               name="cost"
+               required
+               step="0.01"
+               min="0"> <!-- 🔹 impede valores negativos -->
+        @if (expenseForm.submitted && expenseForm.controls['cost']?.hasError('min')) {
+          <mat-error>O valor não pode ser negativo</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Data com Datepicker -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" [(ngModel)]="expense.expenseDate"
+               name="expenseDate" required readonly>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <!-- Categoria -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Categoria</mat-label>
+        <mat-select 
+                [(ngModel)]="categoryNameSelected" 
+                name="category_id" 
+                required
+                (selectionChange)="onCategorySelected($event)"
+                >
+          <mat-option [value]="0">Selecione uma categoria</mat-option>
+          @for (name of categoriesName; track name) {
+            <mat-option [value]="name">
+              {{ name }}
+            </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

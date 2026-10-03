@@ -1,0 +1,25 @@
+<app-category-register-header
+  [canSubmit]="!!body.categoryForm?.valid"
+  (save)="onSubmit(categoryForm)"
+  (clear)="onClear()"
+  (home)="goHome()"
+
+  >
+
+</app-category-register-header>
+
+<app-category-register-body
+  #body
+  [category]="category"
+  (submitCategory)="onSubmit($event)"
+  (clearCategory)="onClear()"
+
+ >
+
+</app-category-register-body>
+
+
+
+<app-footer> </app-footer>
+
+

@@ -1,0 +1,45 @@
+.analysis-layout {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.form-aside {
+  flex: 1;
+  max-width: 700px;
+}
+
+.form-container {
+  background: rgba(17, 24, 39, 0.9);
+  color: #e0e7ff;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  border-radius: 12px;
+}
+
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell {
+  background: #1e3a8a;
+  color: #fff;
+  font-weight: 600;
+}
+
+td.mat-cell {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e0e7ff;
+  padding: 0.6rem;
+}
+
+tr.mat-row:hover td {
+  background: rgba(59, 130, 246, 0.2);
+  cursor: pointer;
+}

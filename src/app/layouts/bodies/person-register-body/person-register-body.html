@@ -1,0 +1,24 @@
+<mat-card class="form-container">
+  <mat-card-header>
+    <mat-card-title>👤 Cadastro de Pessoas</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #personForm="ngForm" (ngSubmit)="onSubmit(personForm)" id="personForm" class="form-body">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="person.name" name="name" required>
+        @if (personForm.submitted && personForm.controls['name']?.hasError('required')) {
+          <mat-error>O nome da pessoa é obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Botões internos opcionais -->
+      <div class="form-actions">
+        <button mat-stroked-button color="warn" type="button" (click)="onClear(personForm)">
+          🧹 Limpar
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
