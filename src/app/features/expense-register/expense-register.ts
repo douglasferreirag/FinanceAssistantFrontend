@@ -1,14 +1,17 @@
 
 import { Component, Output, EventEmitter, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Expense } from '../../models/expense.model';
+//import { Expense } from '../../models/expense.model';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { Footer } from "../../layouts/footer/footer";
-import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header";
-import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body";
-import { Category } from '../../models/category.model';
+
+import { Footer } from "../../layouts/footer/footer.js";
+import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header.js";
+import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body.js";
+import { Category } from '../../models/category.model.js';
 import { format } from 'date-fns';
+import { Expense } from '../../models/expense.model.js';
+import { NavigationService } from '../../utils/NavigationService.js';
+
 
 @Component({
   selector: 'app-expense-form',
@@ -50,7 +53,7 @@ export class ExpenseRegisterComponent {
       return;
     }
 
-   
+
 
     const expensePayload = {
       description: this.expense.description,
@@ -71,7 +74,7 @@ export class ExpenseRegisterComponent {
     });
 
 
-    
+
 
 
 

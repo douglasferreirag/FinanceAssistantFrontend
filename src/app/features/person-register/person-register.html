@@ -1,6 +1,6 @@
 <app-person-register-header
-  [canSubmit]="!!body.personForm?.valid"
-  (save)="onSubmit(personForm)"
+   [canSubmit]="!!body.personForm?.valid"
+  (saveClick)="onSubmit()"
   (clear)="onClear()"
   (home)="goHome()">
 </app-person-register-header>
@@ -8,7 +8,7 @@
 <app-person-register-body
   #body
   [person]="person"
-  (submitPerson)="onSubmit($event)"
+  (submitPerson)="onSubmit()"
   (clearPerson)="onClear()">
 </app-person-register-body>
 

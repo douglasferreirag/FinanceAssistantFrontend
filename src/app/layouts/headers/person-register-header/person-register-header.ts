@@ -13,13 +13,13 @@ export class PersonRegisterHeader {
   @Input() canSubmit: boolean = false;
 
   // Eventos que o pai escuta
-  @Output() save = new EventEmitter<void>();
+  @Output() saveClick = new EventEmitter<void>(); // só dispara clique
   @Output() clear = new EventEmitter<void>();
   @Output() home = new EventEmitter<void>();
 
   // Métodos auxiliares para emitir os eventos
   onSave(): void {
-    this.save.emit();
+    this.saveClick.emit(); // sem payload
   }
 
   onClear(): void {
