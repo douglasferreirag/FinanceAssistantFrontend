@@ -1,6 +1,6 @@
 <app-category-register-header
   [canSubmit]="!!body.categoryForm?.valid"
-  (save)="onSubmit(categoryForm)"
+  (save)="onSubmit()"
   (clear)="onClear()"
   (home)="goHome()"
 
@@ -11,7 +11,7 @@
 <app-category-register-body
   #body
   [category]="category"
-  (submitCategory)="onSubmit($event)"
+  (submitCategory)="onSubmit()"
   (clearCategory)="onClear()"
 
  >

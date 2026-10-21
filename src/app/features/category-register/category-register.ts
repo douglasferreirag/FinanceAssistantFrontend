@@ -1,25 +1,27 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormsModule, NgForm} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { CategoryRegisterBodyComponent } from '../../layouts/bodies/category-register-body/category-register-body';
-import { Category } from '../../models/category.model';
-import { Footer } from '../../layouts/footer/footer';
-import { CategoryRegisterHeader } from "../../layouts/headers/category-register-header/category-register-header";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+
+
+
+import { NavigationService } from '../../utils/NavigationService.js';
+import { Footer } from '../../layouts/footer/footer.js';
+import { CategoryRegisterBodyComponent } from '../../layouts/bodies/category-register-body/category-register-body.js';
+import { CategoryRegisterHeader } from '../../layouts/headers/category-register-header/category-register-header.js';
+import { CategoryRequest } from '../../dtos/requests/category-request.js';
 
 
 @Component({
   selector: 'app-category-form',
   standalone: true,
-  imports: [FormsModule, Footer, CategoryRegisterBodyComponent, CategoryRegisterBodyComponent, CategoryRegisterHeader],
+  imports: [FormsModule, Footer, CategoryRegisterBodyComponent, CategoryRegisterHeader],
   templateUrl: './category-register.html',
   styleUrls: ['./category-register.scss']
 })
 export class CategoryRegisterComponent {
 
-  category: Category = {
-     id: 0,
-     name: ''
+  category: CategoryRequest = {
+     "name": ''
   };
 
   @ViewChild(CategoryRegisterBodyComponent) categoryBody!: CategoryRegisterBodyComponent;
@@ -31,19 +33,26 @@ export class CategoryRegisterComponent {
   canSubmit = false;
 
 
-  onSubmit(event: any) {
+  onSubmit(): void {
+    if (!this.category.name || this.category.name.trim() === "") {
+      alert("⚠️ O nome não pode estar vazio");
+      return;
+    }
 
-    const categoryPayload = { name: this.category.name };
 
-    this.http.post<any>('http://localhost:8080/api/categories/save', categoryPayload).subscribe({
-      next: (catRes) => {
-        console.log('✅ Categoria verificada/cadastrada:', catRes);
-        alert(`Categoria cadastrada com sucesso: ${catRes.reply || 'OK'}`);
+    this.category.name = this.category.name.trim();
+ 
 
+    this.http.post<CategoryRequest>(
+      "http://localhost:8080/api/categories/save",
+      this.category
+    ).subscribe({
+      next: (res: CategoryRequest) => {
+        alert(`✅ Categoria cadastrada com sucesso: ${res.name}`);
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         console.error(err);
-        alert("⚠️ Erro ao cadastrar categoria.");
+        alert(err.error?.message || "⚠️ Erro ao cadastrar categoria.");
       }
     });
   }
@@ -51,7 +60,6 @@ export class CategoryRegisterComponent {
 
   onClear(): void {
     this.category = {
-      id: 0,
       name: ''
     };
   }

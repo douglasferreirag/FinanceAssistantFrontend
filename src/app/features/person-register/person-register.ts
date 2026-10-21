@@ -32,7 +32,7 @@ export class PersonRegisterComponent {
 
   constructor(
     public navigation: NavigationService,
-    private readonly http: HttpClient   //
+    private readonly http: HttpClient   
   ) {}
 
   canSubmit = false;
@@ -43,10 +43,11 @@ export class PersonRegisterComponent {
       alert("⚠️ O nome não pode estar vazio");
       return;
     }
-    console.log(this.person);
+
     // Usa diretamente this.person como payload
     this.person.name = this.person.name.trim();
-    console.log("Payload enviado:", this.person);
+
+
     this.http.post<PersonRequest>('http://localhost:8080/api/persons/save', this.person).subscribe({
       next: (res: PersonRequest) => {
         alert(`✅ Pessoa cadastrada com sucesso: ${res.name || 'OK'}`);
