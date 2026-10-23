@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { GoalRequest } from '../../../dtos/requests/goal-request.js';
 
 @Component({
   selector: 'app-goal-register-body',
@@ -24,7 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class GoalRegisterBodyComponent {
 
-  @Input() goal: any = {
+  @Input() goal: GoalRequest= {
     month: new Date().getMonth() + 1,   // mês atual (1–12)
     year: new Date().getFullYear(),     // ano atual
     ceiling: 0                          // 🔹 valor limite default

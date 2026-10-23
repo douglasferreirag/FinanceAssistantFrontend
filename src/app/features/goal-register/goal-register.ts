@@ -1,10 +1,12 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { Footer } from "../../layouts/footer/footer";
-import { GoalRegisterBodyComponent } from "../../layouts/bodies/goal-register-body/goal-register-body.component";
-import { GoalRegisterHeaderComponent } from "../../layouts/headers/goal-register-header/goal-register-header";
+import { NavigationService } from '../../utils/NavigationService.js';
+import { Footer } from "../../layouts/footer/footer.js";
+import { GoalRegisterBodyComponent } from "../../layouts/bodies/goal-register-body/goal-register-body.component.js";
+import { GoalRegisterHeaderComponent } from "../../layouts/headers/goal-register-header/goal-register-header.js";
+import { GoalRequest } from '../../dtos/requests/goal-request.js';
+import { GoalResponse } from '../../dtos/responses/goal-response.js';
 
 @Component({
   selector: 'app-goal-form',
@@ -18,7 +20,7 @@ export class GoalRegisterComponent {
   @ViewChild(GoalRegisterBodyComponent) goalBody!: GoalRegisterBodyComponent;
   @ViewChild('goalForm') goalForm!: NgForm;
 
-  goal = {
+  goal: GoalRequest = {
     month: new Date().getMonth() + 1,
     year: new Date().getFullYear(),
     ceiling: 0
@@ -28,21 +30,30 @@ export class GoalRegisterComponent {
 
   constructor(private http: HttpClient, public navigation: NavigationService) {}
 
-  onSubmit(event: any) {
+  onSubmit(): void {
+    // validação simples
+    if (!this.goal.month || !this.goal.year || !this.goal.ceiling) {
+      alert("⚠️ Todos os campos da meta são obrigatórios");
+      return;
+    }
 
-    const goalPayload = {
+    const goalPayload: GoalRequest = {
       month: this.goal.month,
       year: this.goal.year,
       ceiling: this.goal.ceiling
     };
 
-    this.http.post<any>('http://localhost:8080/api/goals/save', goalPayload).subscribe({
-      next: (res) => {
-        alert(`✅ Meta cadastrada com sucesso: ${res.description || 'OK'}`);
+    this.http.post<GoalResponse>(
+      "http://localhost:8080/api/goals/save",
+      goalPayload
+    ).subscribe({
+      next: (res: GoalResponse) => {
+        alert(`✅ Meta cadastrada com sucesso: mês ${res.month}/${res.year}, teto ${res.ceiling}`);
+        this.onClear(); // limpa o formulário
       },
       error: (err) => {
         console.error(err);
-        alert("⚠️ Erro ao cadastrar meta.");
+        alert(err.error?.message || "⚠️ Erro ao cadastrar meta.");
       }
     });
   }
