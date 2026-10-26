@@ -9,11 +9,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter } from '@angular/material/core';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { ExpenseRequest } from '../../../dtos/requests/expense-request.js';
 
 export const MY_DATE_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY',
-  },
+  parse: { dateInput: 'DD/MM/YYYY' },
   display: {
     dateInput: 'DD/MM/YYYY',
     monthYearLabel: 'MMMM YYYY',
@@ -46,13 +45,17 @@ export const MY_DATE_FORMATS = {
 export class ExpenseRegisterBodyComponent {
   @Input() expense: any;
   @Input() categoriesName: string[] = [];
-  @Output() submitExpense = new EventEmitter<any>();
+  @Input() personsName: string[] = []; // 🔹 lista de pessoas recebida do pai
+
+  @Output() submitExpense = new EventEmitter<ExpenseRequest>();
   @Output() clearExpense = new EventEmitter<void>();
   @Output() categorySelected = new EventEmitter<string>();
+  @Output() personSelected = new EventEmitter<string>(); // 🔹 evento para pessoa
 
-  @ViewChild('expenseForm') expenseForm!: NgForm; // expõe o form para o pai
+  @ViewChild('expenseForm') expenseForm!: NgForm;
 
   categoryNameSelected: string = '';
+  personNameSelected: string = ''; // 🔹 valor selecionado no select de pessoa
 
   constructor(private dateAdapter: DateAdapter<Date>) {
     this.dateAdapter.setLocale('pt-BR'); // força o formato brasileiro
@@ -60,6 +63,12 @@ export class ExpenseRegisterBodyComponent {
 
   onCategorySelected(event: any) {
     this.categorySelected.emit(this.categoryNameSelected);
+    this.expense.categoryId = event.value; // garante que o expense receba o id
+  }
+
+  onPersonSelected(event: any) {
+    this.personSelected.emit(this.personNameSelected);
+    this.expense.personId = event.value; // garante que o expense receba o id
   }
 
   onSubmit(form: NgForm) {
@@ -69,7 +78,7 @@ export class ExpenseRegisterBodyComponent {
   }
 
   onClear(form: NgForm) {
-    form.resetForm(); // limpa os campos
-    this.clearExpense.emit(); // avisa o pai
+    form.resetForm();
+    this.clearExpense.emit();
   }
 }
