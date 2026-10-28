@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Footer } from "../../layouts/footer/footer";
-import { Person } from '../../models/person.model';
+import { Footer } from "../../layouts/footer/footer.js";
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { PersonListHeader } from "../../layouts/headers/person-list-header/person-list-header";
-import { PersonListBody } from "../../layouts/bodies/person-list-body/person-list-body";
+import { NavigationService } from '../../utils/NavigationService.js';
+import { PersonListHeader } from "../../layouts/headers/person-list-header/person-list-header.js";
+import { PersonListBody } from "../../layouts/bodies/person-list-body/person-list-body.js";
+import { PersonResponse } from '../../dtos/responses/person-response.js';
 
 @Component({
   selector: 'app-person-list',
@@ -13,7 +13,7 @@ import { PersonListBody } from "../../layouts/bodies/person-list-body/person-lis
   styleUrl: './person-list.scss',
 })
 export class PersonListComponent {
-  persons: Person[] = [];
+  persons: PersonResponse[] = [];
   loading = false;
 
   constructor(
@@ -24,7 +24,7 @@ export class PersonListComponent {
 
   // Método: busca os dados no backend
   importPersons(): void {
-    this.http.get<Person[]>('http://localhost:8080/api/persons/findAll')
+    this.http.get<PersonResponse[]>('http://localhost:8080/api/persons/findAll')
       .subscribe({
         next: (res) => {
           // atribui um novo array, não muta o existente
