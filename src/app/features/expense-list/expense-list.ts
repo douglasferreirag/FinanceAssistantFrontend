@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Expense } from '../../models/expense.model';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '../../utils/NavigationService';
-import { Footer } from "../../layouts/footer/footer";
-import { ExpenseListBodyComponent } from "../../layouts/bodies/expense-list-body/expense-list-body";
-import { ExpenseListHeaderComponent } from "../../layouts/headers/expense-list-header/expense-list-header";
+import { NavigationService } from '../../utils/NavigationService.js';
+import { Footer } from "../../layouts/footer/footer.js";
+import { ExpenseListBodyComponent } from "../../layouts/bodies/expense-list-body/expense-list-body.js";
+import { ExpenseListHeaderComponent } from "../../layouts/headers/expense-list-header/expense-list-header.js";
+import { ExpenseResponse } from '../../dtos/responses/expense-response.js';
 
 @Component({
   selector: 'app-expense-list',
@@ -15,7 +15,7 @@ import { ExpenseListHeaderComponent } from "../../layouts/headers/expense-list-h
   styleUrls: ['./expense-list.scss'],
 })
 export class ExpenseListComponent {
-  expenses: Expense[] = [];
+  expenses: ExpenseResponse[] = [];
   loading = false;
 
   constructor(
@@ -26,7 +26,7 @@ export class ExpenseListComponent {
 
   // Método 1: busca os dados no backend
   importExpenses(): void {
-        this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
+        this.http.get<ExpenseResponse[]>('http://localhost:8080/api/expenses/findAll')
           .subscribe({
             next: (res) => {
               // atribui um novo array, não muta o existente
@@ -51,7 +51,7 @@ export class ExpenseListComponent {
 
 
   exportTable(): void {
-    this.http.get<Expense[]>('http://localhost:8080/api/expenses/findAll')
+    this.http.get<ExpenseResponse[]>('http://localhost:8080/api/expenses/findAll')
       .subscribe({
         next: (res) => {
           // Cabeçalho
