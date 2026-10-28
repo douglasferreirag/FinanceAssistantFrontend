@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {  ExpenseRegisterComponent } from './expense-register';
+import {  ExpenseRegisterComponent } from './expense-register.js';
+import { describe, beforeEach, it , expect} from 'vitest';
 
 describe('ExpenseRegisterComponent', () => {
   let component: ExpenseRegisterComponent;

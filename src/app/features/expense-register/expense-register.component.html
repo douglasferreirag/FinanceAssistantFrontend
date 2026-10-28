@@ -12,7 +12,8 @@
   [expense]="expense"
   [categoriesName]="categoriesName"
   [personsName]="personsName"
-  (categorySelected)="onCategorySelected($event)"
+  (categorySelected)="onCategorySelected($event)" 
+  (personSelected)="onPersonSelected($event)"
   (submitExpense)="onSubmit()"
   (clearExpense)="onClear()">
 </app-expense-register-body>

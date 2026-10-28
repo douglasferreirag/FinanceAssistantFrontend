@@ -7,13 +7,9 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Footer } from "../../layouts/footer/footer.js";
 import { ExpenseRegisterHeaderComponent } from "../../layouts/headers/expense-register-header/expense-register-header.js";
 import { ExpenseRegisterBodyComponent } from "../../layouts/bodies/expense-register-body/expense-register-body.js";
-import { Category } from '../../models/category.model.js';
-import { format } from 'date-fns';
-import { Expense } from '../../models/expense.model.js';
 import { NavigationService } from '../../utils/NavigationService.js';
-import { CategoryRequest } from '../../dtos/requests/category-request.js';
 import { ExpenseRequest } from '../../dtos/requests/expense-request.js';
-import { PersonRequest } from '../../dtos/requests/person-request.js';
+
 
 
 @Component({
@@ -33,8 +29,8 @@ export class ExpenseRegisterComponent {
           new Date().getMonth(),
           new Date().getDate()
         ),
-        category : { name: '' },
-        person : { name: '' }
+        categoryName : '',
+        personName: '',
   };
 
   @ViewChild(ExpenseRegisterBodyComponent) expenseBody!: ExpenseRegisterBodyComponent;
@@ -44,8 +40,8 @@ export class ExpenseRegisterComponent {
   categoriesName: string[] = [];
   personsName: string[] = [];
   loading = false;
-  category: CategoryRequest = {  name: '' };
-  person: PersonRequest = {  name: '' };
+  categoryName: string = '';
+  personName: string = '';
 
   constructor(private http: HttpClient,
               public navigation: NavigationService,
@@ -54,7 +50,8 @@ export class ExpenseRegisterComponent {
   // 🔹 Agora o pai recebe o form do body
   onSubmit() {
 
-          // 🔹 Verificações específicas
+        // 🔹 Verificações específicas
+        // 🔹 Validações de campos obrigatórios
         if (!this.expense.description || this.expense.description.trim() === "") {
           alert("⚠️ A descrição não pode estar vazia");
           return;
@@ -70,16 +67,15 @@ export class ExpenseRegisterComponent {
           return;
         }
 
-        if (!this.expense.category || !this.expense.category.name || this.expense.category.name.trim() === "") {
+       if (this.expense.categoryName === "Selecione...") {
           alert("⚠️ A categoria deve ser selecionada");
           return;
         }
 
-        if (!this.expense.person || !this.expense.person.name || this.expense.person.name.trim() === "") {
+       if (this.expense.personName === "Selecione...") {
           alert("⚠️ A pessoa que fez o gasto deve ser selecionada");
           return;
         }
-
 
         this.http.post<ExpenseRequest>('http://localhost:8080/api/expenses/save', this.expense).subscribe({
           next: (res: ExpenseRequest) => {
@@ -93,64 +89,44 @@ export class ExpenseRegisterComponent {
 
 
 
-
-
-
-
   }
 
   onClear() {
-    this.expense = {
-        description: '',
-        cost: 0,
-        expenseDate: new Date(
-          new Date().getFullYear(),
-          new Date().getMonth(),
-          new Date().getDate()
-        ),
-        category : { name: '' },
-        person : { name: '' }
-  };
+      this.expense = {
+          description: '',
+          cost: 0,
+          expenseDate: new Date(
+            new Date().getFullYear(),
+            new Date().getMonth(),
+            new Date().getDate()
+          ),
+          categoryName : '',
+          personName: '',
+    };
     this.categoriesName = [];
   }
 
   onCategorySelected(name: string) {
 
-    this.getCategoryByName(name);
+    //this.getCategoryByName(name);
+
+    this.expense.categoryName = name;
+
   }
+
+  onPersonSelected(name: string) {
+
+    this.expense.personName = name;
+
+
+  }
+
 
   goHome() {
     this.navigation.goTo('');
   }
 
-  getCategoryByName(name: string): void {
-    this.http.get<CategoryRequest>(`http://localhost:8080/api/categories/findByName/${name}`)
-      .subscribe({
-        next: (res: CategoryRequest) => {
-          this.category = res;
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error('Erro ao buscar categoria por nome', err);
-          alert("⚠️ Categoria não encontrada.");
-          this.category = {  name: '' };
-        }
-      });
-  }
-
-  getPersonByName(name: string): void {
-    this.http.get<string[]>(`http://localhost:8080/api/persons/findByName/${name}`)
-      .subscribe({
-        next: (res : string[]) => {
-          this.person = { name: res[0] };
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error('Erro ao buscar pessoa por nome', err);
-          alert("⚠️ Pessoa não encontrada.");
-          this.person = {  name: '' };
-        }
-      });
-  }
-
+ 
   onImportCategories(): void {
     this.http.get<string[]>('http://localhost:8080/api/categories/names')
       .subscribe({
