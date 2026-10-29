@@ -26,7 +26,7 @@ export class ExpenseListComponent {
 
   // Método 1: busca os dados no backend
   importExpenses(): void {
-        this.http.get<ExpenseResponse[]>('http://localhost:8080/api/expenses/findAll')
+        this.http.get<ExpenseResponse[]>('http://localhost:8080/api/expenses/findAllWithCategoryAndPerson')
           .subscribe({
             next: (res) => {
               // atribui um novo array, não muta o existente
@@ -45,6 +45,8 @@ export class ExpenseListComponent {
               this.expenses = [];
             }
           });
+
+
 
   }
 

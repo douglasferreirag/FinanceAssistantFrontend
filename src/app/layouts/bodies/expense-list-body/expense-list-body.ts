@@ -21,6 +21,6 @@ export class ExpenseListBodyComponent {
   @Input() expenses: ExpenseResponse[] = [];
 
   // ✅ Propriedade que o Angular Material precisa
-  displayedColumns: string[] = ['description', 'expenseDate', 'cost'];
+  displayedColumns: string[] = ['description', 'expenseDate', 'cost', 'personName', 'categoryName'];
 
 }
