@@ -53,46 +53,62 @@ export class ExpenseListComponent {
 
 
   exportTable(): void {
-    this.http.get<ExpenseResponse[]>('http://localhost:8080/api/expenses/findAll')
+    this.http
+      .get<ExpenseResponse[]>(
+        'http://localhost:8080/api/expenses/findAllWithCategoryAndPerson'
+      )
       .subscribe({
-        next: (res) => {
-          // Cabeçalho
-          const header = ["Descrição", "Data", "Valor"];
+        next: (expenses) => {
 
-          // Linhas de dados
-          const rows = res.map(expense => {
-            const descricao = expense.description ?? "";
-            const data = new Date(expense.expenseDate).toLocaleDateString("pt-BR");
-            const valor = (expense.cost ?? 0).toLocaleString("pt-BR", {
+          const header = [
+            "Descrição",
+            "Data",
+            "Valor",
+            "Categoria",
+            "Pessoa"
+          ];
+
+          const rows = expenses.map(expense => [
+            expense.description ?? "",
+            expense.expenseDate
+              ? new Date(expense.expenseDate).toLocaleDateString("pt-BR")
+              : "",
+            Number(expense.cost ?? 0).toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL"
-            });
-            return [descricao, data, valor];
-          });
+            }),
+            expense.categoryName ?? "",
+            expense.personName ?? ""
+          ]);
 
-          // Monta o CSV célula a célula
-          let csvContent = "";
-          csvContent += header.join(";") + "\n"; // separador ; para abrir direto no Excel BR
-          rows.forEach(row => {
-            csvContent += row.join(";") + "\n";
-          });
+          const csvContent = [
+            header.join(";"),
+            ...rows.map(row => row.join(";"))
+          ].join("\n");
 
-          // Cria o blob
-          const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-          const url = URL.createObjectURL(blob);
+          const blob = new Blob(
+            ["\uFEFF" + csvContent],
+            {
+              type: "text/csv;charset=utf-8;"
+            }
+          );
 
-          // Cria o link para download
+          const url = window.URL.createObjectURL(blob);
+
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", "data/gastos_exportados.csv");
+          link.download = "gastos_exportados.csv";
+
           document.body.appendChild(link);
           link.click();
-          document.body.removeChild(link);
 
-          console.log("✅ Exportação concluída!");
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+
+          console.log("✅ Arquivo exportado com sucesso!");
         },
-        error: (err) => {
-          console.error("Erro ao exportar gastos", err);
+        error: (error) => {
+          console.error("❌ Erro ao exportar gastos:", error);
         }
       });
   }
