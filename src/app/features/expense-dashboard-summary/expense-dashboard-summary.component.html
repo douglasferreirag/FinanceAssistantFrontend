@@ -1,0 +1,17 @@
+<div class="assistant-layout">
+  <!-- Header -->
+  <app-expense-dashboard-summary-header
+    (goHome)="onGoHome()"
+    (generateGraphic)="onGenerateGraphic($event)">
+  </app-expense-dashboard-summary-header>
+
+  <!-- Body -->
+  <app-expense-dashboard-summary-body
+    (canvasReady)="onCanvasReady($event)"
+    [dashboard]="dashboard">
+    [dashboardData]="dashboardData"
+  </app-expense-dashboard-summary-body>
+
+  <!-- Footer -->
+  <app-footer></app-footer>
+</div>

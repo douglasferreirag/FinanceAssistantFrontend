@@ -3,8 +3,6 @@ export interface ExpenseResponse {
   description: string;
   cost: number;
   expenseDate: Date;
-  //categoryId: number;
-  //personId: number;
   categoryName: string;
   personName: string;
   goalId: number;

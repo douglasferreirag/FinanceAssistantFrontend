@@ -1,0 +1,94 @@
+<div class="dashboard-cards">
+
+  <mat-card class="dashboard-card total-card">
+    <mat-card-content>
+
+      <div class="card-icon">💰</div>
+
+      <div class="card-info">
+        <span class="card-title">
+          Total Gasto
+        </span>
+
+        <span class="card-value">
+          {{ dashboard.totalExpenses | currency:'BRL' }}
+        </span>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card highest-card">
+    <mat-card-content>
+
+      <div class="card-icon">🏆</div>
+
+      <div class="card-info">
+        <span class="card-title">
+          Maior Gasto
+        </span>
+
+        <span class="card-value">
+          {{ dashboard.highestExpense | currency:'BRL' }}
+        </span>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card records-card">
+    <mat-card-content>
+
+      <div class="card-icon">📄</div>
+
+      <div class="card-info">
+        <span class="card-title">
+          Total de Gastos
+        </span>
+
+        <span class="card-value">
+          {{ dashboard.totalRecords }}
+        </span>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card average-card">
+    <mat-card-content>
+
+      <div class="card-icon">📈</div>
+
+      <div class="card-info">
+        <span class="card-title">
+          Média
+        </span>
+
+        <span class="card-value">
+          {{ dashboard.averageExpense | currency:'BRL' }}
+        </span>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+<!-- Gráfico da Visão Geral -->
+<mat-card class="dashboard-chart">
+
+  <mat-card-header>
+    <mat-card-title>
+      📊 Visão Geral Financeira
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <div class="chart-container">
+      <canvas id="dashboardChart"></canvas>
+    </div>
+
+  </mat-card-content>
+
+</mat-card>

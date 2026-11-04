@@ -5,13 +5,13 @@ import { CommonModule } from '@angular/common';
 import { ChartType } from 'chart.js';
 
 @Component({
-  selector: 'app-expense-graphics-header',
+  selector: 'app-expense-dashboard-summary-header',
   standalone: true,
   imports: [CommonModule, MatToolbarModule, MatButtonModule],
-  templateUrl: './expense-graphics-header.html',
-  styleUrls: ['./expense-graphics-header.scss']
+  templateUrl: './expense-dashboard-summary-header.html',
+  styleUrls: ['./expense-dashboard-summary-header.scss']
 })
-export class ExpenseGraphicsHeaderComponent {
+export class ExpenseDashboardSummaryHeaderComponent {
   @Output() goHome = new EventEmitter<void>();
   @Output() generateGraphic = new EventEmitter<ChartType>();
 }
