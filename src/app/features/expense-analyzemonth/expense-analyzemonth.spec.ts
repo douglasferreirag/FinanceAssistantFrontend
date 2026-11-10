@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ExpenseAnalyzeMonthComponent } from './expense-analyzemonth.component';
+import { ExpenseAnalyzeMonthComponent } from './expense-analyzemonth.component.js';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('ExpenseAnalyzeMonth', () => {
   let component: ExpenseAnalyzeMonthComponent;

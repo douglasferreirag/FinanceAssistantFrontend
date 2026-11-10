@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Footer } from "../../layouts/footer/footer";
+import { Footer } from "../../layouts/footer/footer.js";
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { ExpenseAnalyzeHistoryBodyComponent } from '../../layouts/bodies/expense-analyzehistory-body/expense-analyzehistory-body.component';
-import { ExpenseAnalyzeHistoryHeaderComponent } from '../../layouts/headers/expense-analyzehistory-header/expense-analyzehistory-header.component';
+import { NavigationService } from '../../utils/NavigationService.js';
+import { ExpenseAnalyzeHistoryBodyComponent } from '../../layouts/bodies/expense-analyzehistory-body/expense-analyzehistory-body.component.js';
+import { ExpenseAnalyzeHistoryHeaderComponent } from '../../layouts/headers/expense-analyzehistory-header/expense-analyzehistory-header.component.js';
 
 @Component({
   selector: 'app-expense-analyze-history',
@@ -23,9 +23,9 @@ export class ExpenseAnalyzeHistoryComponent {
     private cdr: ChangeDetectorRef
   ) {}
 
-  
 
-  
+
+
 
   // evento de análise do histórico
  onAnalyze() {
@@ -63,7 +63,7 @@ export class ExpenseAnalyzeHistoryComponent {
   }
 
 
-  
+
   onGoHome() {
       this.navigation.goTo('');
   }

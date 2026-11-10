@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { Footer } from "../../layouts/footer/footer";
+import { Footer } from "../../layouts/footer/footer.js";
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService';
-import { ExpenseAnalyzeMonthBody } from '../../layouts/bodies/expense-analyzemonth-body/expense-analyzemonth-body';
-import { ExpenseAnalyzeMonthHeader } from '../../layouts/headers/expense-analyzemonth-header/expense-analyzemonth-header';
+import { NavigationService } from '../../utils/NavigationService.js';
+import { ExpenseAnalyzeMonthBody } from '../../layouts/bodies/expense-analyzemonth-body/expense-analyzemonth-body.js';
+import { ExpenseAnalyzeMonthHeader } from '../../layouts/headers/expense-analyzemonth-header/expense-analyzemonth-header.js';
 
 @Component({
   selector: 'app-expense-analyzemonth',
@@ -53,27 +53,57 @@ export class ExpenseAnalyzeMonthComponent {
     });
   }
 
-  onImportTotal() {
-     this.loading = true;
+  onImportTotal(): void {
 
-    console.log("Buscando total para:", this.month, this.year);
+    this.loading = true;
 
-    this.http.get<number>(
-      `http://localhost:8080/api/expenses/sumByMonthAndYear?month=${this.month}&year=${this.year}`
-    ).subscribe({
-      next: (res) => {
-        this.total = res;
-        console.log(`Total de gastos em ${this.month}/${this.year}:`, this.total);
-        this.updateAnalyzeEnabled();
-        this.cdr.detectChanges();
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Erro ao importar total', err);
-        this.total = null;
-        this.loading = false;
+    console.log(
+      `Buscando total para ${this.month}/${this.year}`
+    );
+
+     this.http.get<number>(
+      'http://localhost:8080/api/expenses/TotalExpensesByMonth',
+      {
+        params: {
+          month: this.month,
+          year: this.year
+        }
       }
+    )
+    .subscribe({
+
+      next: (res) => {
+
+        this.total = res;
+
+        console.log(
+          `Total de gastos em ${this.month}/${this.year}:`,
+          this.total
+        );
+
+        this.updateAnalyzeEnabled();
+
+        this.cdr.detectChanges();
+
+        this.loading = false;
+
+      },
+
+      error: (err) => {
+
+        console.error(
+          'Erro ao importar total',
+          err
+        );
+
+        this.total = null;
+
+        this.loading = false;
+
+      }
+
     });
+
   }
 
   onClear() {
@@ -98,6 +128,10 @@ export class ExpenseAnalyzeMonthComponent {
   onFormSubmit(data: {month:number, year:number}) {
     console.log("Formulário enviado:", data);
     // aqui depois vamos chamar o backend
+
+    this.month = data.month;
+    this.year = data.year;
+
   }
 
   private updateAnalyzeEnabled() {
