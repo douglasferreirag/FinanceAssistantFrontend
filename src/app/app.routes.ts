@@ -10,7 +10,6 @@ import { CategoryRegisterComponent } from './features/category-register/category
 import { CategoryListComponent } from './features/category-list/category-list.component.js';
 
 import { ExpenseAnalyzeHistoryComponent } from './features/expense-analyzehistory/expense-analyzehistory.component.js';
-import { ExpenseAnalyzeMonthComponent } from './features/expense-analyzemonth/expense-analyzemonth.component.js';
 import { PersonRegisterComponent } from './features/person-register/person-register.js';
 import { PersonListComponent } from './features/person-list/person-list.js';
 
@@ -51,10 +50,6 @@ export const routes: Routes = [
   {
     path: 'list-categories',
     component: CategoryListComponent
-  },
-  {
-    path: 'analyze-expenses',
-    component: ExpenseAnalyzeMonthComponent
   },
   {
     path: 'analyze-expense-history',
