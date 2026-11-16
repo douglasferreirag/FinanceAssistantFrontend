@@ -1,15 +1,19 @@
 <mat-toolbar color="primary" class="site-header">
-  <!-- Logo igual à home -->
+
   <span class="logo">Assistente Financeiro</span>
 
   <span class="spacer"></span>
 
-  <!-- Botões -->
   <button mat-button (click)="goHome.emit()">
     🏠 Página Inicial
+  </button>
+
+  <button mat-stroked-button color="warn" (click)="clear.emit()">
+    🧹 Limpar
   </button>
 
   <button mat-raised-button color="accent" (click)="analyze.emit()">
     📑 Analisar
   </button>
+
 </mat-toolbar>

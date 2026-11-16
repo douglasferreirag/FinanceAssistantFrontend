@@ -14,6 +14,7 @@ import { PersonRegisterComponent } from './features/person-register/person-regis
 import { PersonListComponent } from './features/person-list/person-list.js';
 
 
+
 export const routes: Routes = [
   {
     path: '',

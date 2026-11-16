@@ -1,23 +1,53 @@
 <main class="site-body">
   <section class="content">
     <mat-card class="chatbot-card">
+
       <mat-card-header>
-        <mat-card-title>🤖 Análise Inteligente de Gastos</mat-card-title>
+        <mat-card-title>
+          🤖 Análise Inteligente de Gastos
+        </mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
-        <!-- Janela de chat -->
+
+        <!-- Filtros -->
+        <div class="filters-panel">
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Selecione uma pessoa</mat-label>
+
+            <mat-select
+              [(value)]="selectedPerson"
+              (selectionChange)="onSelectionChange()">
+
+              @for(person of personsName; track person) {
+                <mat-option [value]="person">
+                  {{ person }}
+                </mat-option>
+              }
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+        <!-- Chat -->
         <div class="chat-window">
 
           @for (msg of messages; track msg) {
-            <div class="chat-message" [ngClass]="msg.sender">
+            <div
+              class="chat-message"
+              [ngClass]="msg.sender">
+
               <p>{{ msg.text }}</p>
+
             </div>
           }
 
         </div>
-      </mat-card-content>
 
+      </mat-card-content>
 
     </mat-card>
   </section>

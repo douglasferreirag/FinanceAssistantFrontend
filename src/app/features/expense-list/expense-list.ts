@@ -55,7 +55,7 @@ export class ExpenseListComponent {
   exportTable(): void {
     this.http
       .get<ExpenseResponse[]>(
-        'http://localhost:8080/api/expenses/findAllWithCategoryAndPerson'
+        'http://localhost:8080/api/expenses/listAll'
       )
       .subscribe({
         next: (expenses) => {

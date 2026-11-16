@@ -1,14 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 // Angular Material
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-
-
 
 @Component({
   selector: 'app-expense-analyzehistory-body',
@@ -18,16 +16,29 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatSelectModule
   ],
   templateUrl: './expense-analyzehistory-body.html',
   styleUrl: './expense-analyzehistory-body.scss',
 })
 export class ExpenseAnalyzeHistoryBodyComponent {
 
-  @Input() messages: { sender: string, text: string }[] = [];
-  @Input() userMessage: string = '';
+  @Input() messages: { sender: string; text: string }[] = [];
 
+  @Input() userMessage = '';
 
+  @Input() personsName: string[] = [];
 
+  selectedPerson = '';
+
+  @Output()
+  personSelected = new EventEmitter<string>();
+
+  onSelectionChange(): void {
+    this.personSelected.emit(this.selectedPerson);
+  }
+
+  clear(): void {
+    this.selectedPerson = '';
+  }
 }

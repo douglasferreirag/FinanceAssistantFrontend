@@ -43,7 +43,17 @@ export const MY_DATE_FORMATS = {
   styleUrls: ['./expense-register-body.scss']
 })
 export class ExpenseRegisterBodyComponent {
-  @Input() expense: any;
+  @Input() expense: ExpenseRequest = {
+    description: '',
+    cost: 0,
+    expenseDate: new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    ),
+    categoryName: '',
+    personName: '',
+  };
   @Input() categoriesName: string[] = [];
   @Input() personsName: string[] = []; // 🔹 lista de pessoas recebida do pai
 
@@ -63,12 +73,12 @@ export class ExpenseRegisterBodyComponent {
 
   onCategorySelected(event: any) {
     this.categorySelected.emit(this.categoryNameSelected);
-    this.expense.categoryId = event.value; // garante que o expense receba o id
+    this.expense.categoryName = event.value; // garante que o expense receba o id
   }
 
   onPersonSelected(event: any) {
     this.personSelected.emit(this.personNameSelected);
-    this.expense.personId = event.value; // garante que o expense receba o id
+    this.expense.personName = event.value; // garante que o expense receba o id
   }
 
   onSubmit(form: NgForm) {

@@ -126,7 +126,7 @@ export class ExpenseRegisterComponent {
     this.navigation.goTo('');
   }
 
- 
+
   onImportCategories(): void {
     this.http.get<string[]>('http://localhost:8080/api/categories/names')
       .subscribe({

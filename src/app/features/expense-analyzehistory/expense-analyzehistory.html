@@ -1,13 +1,14 @@
 <app-expense-analyzehistory-header
   (goHome)="onGoHome()"
   (analyze)="onAnalyze()"
->
+  (clear)="onClear()">
 </app-expense-analyzehistory-header>
 
 <app-expense-analyzehistory-body
   [messages]="messages"
-  [userMessage]="userMessage">
->
+  [userMessage]="userMessage"
+  [personsName]="personsName"
+  (personSelected)="onPersonSelected($event)">
 </app-expense-analyzehistory-body>
 
 <app-footer></app-footer>
