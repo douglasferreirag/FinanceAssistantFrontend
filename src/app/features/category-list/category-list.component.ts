@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Footer } from "../../layouts/footer/footer.js";
 import { Category } from '../../models/category.model.js';
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { CategoryListHeader } from "../../layouts/headers/category-list-header/category-list-header.js";
 import { CategoryListBody } from "../../layouts/bodies/category-list-body/category-list-body.js";
 import { CategoryResponse } from '../../dtos/responses/category-response.js';

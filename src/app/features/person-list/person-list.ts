@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { Footer } from "../../layouts/footer/footer.js";
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { PersonListHeader } from "../../layouts/headers/person-list-header/person-list-header.js";
 import { PersonListBody } from "../../layouts/bodies/person-list-body/person-list-body.js";
 import { PersonResponse } from '../../dtos/responses/person-response.js';

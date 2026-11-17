@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { Footer } from "../../layouts/footer/footer.js";
 import { GoalRegisterBodyComponent } from "../../layouts/bodies/goal-register-body/goal-register-body.component.js";
 import { GoalRegisterHeaderComponent } from "../../layouts/headers/goal-register-header/goal-register-header.js";

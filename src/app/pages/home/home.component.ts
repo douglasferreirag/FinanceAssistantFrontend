@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NavigationService } from '../../utils/NavigationService';
-import { Footer } from "../../layouts/footer/footer";
-import { HomeComponentBody } from '../../layouts/bodies/home-component-body/home-component-body';
-import { HomeComponentHeader } from '../../layouts/headers/home-component-header/home-component-header';
+import { NavigationService } from '../../services/NavigationService.js';
+import { Footer } from "../../layouts/footer/footer.js";
+import { HomeComponentBody } from '../../layouts/bodies/home-component-body/home-component-body.js';
+import { HomeComponentHeader } from '../../layouts/headers/home-component-header/home-component-header.js';
 
 
 

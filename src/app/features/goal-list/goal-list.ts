@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { Footer } from "../../layouts/footer/footer.js";
 import { GoalListBody } from "../../layouts/bodies/goal-list-body/goal-list-body.js";
 import { GoalListHeader } from '../../layouts/headers/goal-list-header/goal-list-header.js';

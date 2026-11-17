@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
 
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { Footer } from '../../layouts/footer/footer.js';
 import { CategoryRegisterBodyComponent } from '../../layouts/bodies/category-register-body/category-register-body.js';
 import { CategoryRegisterHeader } from '../../layouts/headers/category-register-header/category-register-header.js';
@@ -41,7 +41,7 @@ export class CategoryRegisterComponent {
 
 
     this.category.name = this.category.name.trim();
- 
+
 
     this.http.post<CategoryRequest>(
       "http://localhost:8080/api/categories/save",

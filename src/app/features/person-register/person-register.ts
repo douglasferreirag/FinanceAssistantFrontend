@@ -3,7 +3,7 @@ import { Component, EventEmitter, Output, ViewChild } from "@angular/core";
 import { Footer } from "../../layouts/footer/footer.js";
 import { PersonRegisterHeader } from "../../layouts/headers/person-register-header/person-register-header.js";
 import { PersonRegisterBodyComponent } from "../../layouts/bodies/person-register-body/person-register-body.js";
-import { NavigationService } from "../../utils/NavigationService.js";
+import { NavigationService } from "../../services/NavigationService.js";
 import { PersonRequest } from "../../dtos/requests/person-request.js";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
@@ -32,7 +32,7 @@ export class PersonRegisterComponent {
 
   constructor(
     public navigation: NavigationService,
-    private readonly http: HttpClient   
+    private readonly http: HttpClient
   ) {}
 
   canSubmit = false;

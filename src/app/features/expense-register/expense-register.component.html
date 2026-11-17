@@ -3,8 +3,7 @@
   (save)="onSubmit()"
   (clear)="onClear()"
   (home)="goHome()"
-  (importCategories)="onImportCategories()"
-  (importPersons)="onImportPersons()">
+ >
 </app-expense-register-header>
 
 <app-expense-register-body
@@ -12,7 +11,7 @@
   [expense]="expense"
   [categoriesName]="categoriesName"
   [personsName]="personsName"
-  (categorySelected)="onCategorySelected($event)" 
+  (categorySelected)="onCategorySelected($event)"
   (personSelected)="onPersonSelected($event)"
   (submitExpense)="onSubmit()"
   (clearExpense)="onClear()">

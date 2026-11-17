@@ -1,26 +1,186 @@
 :host {
   display: block;
+  width: 100%;
+}
+
+/* Fundo da página */
+.site-body {
   min-height: 100vh;
+  padding: 32px;
 
-  /* Fundo com imagem localizada em assets */
-  background: url('../../../assets/listagemcategorias.png') no-repeat center center fixed;
-  background-size: cover;
-
-  /* Opcional: overlay escuro para dar contraste */
-  position: relative;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(124, 58, 237, 0.12),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(79, 70, 229, 0.10),
+      transparent 20%
+    ),
+    linear-gradient(
+      180deg,
+      #f8fafc,
+      #eef2ff
+    );
 }
 
-:host::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(17, 24, 39, 0.7); /* camada escura translúcida */
-  z-index: 0;
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.site-body,
-mat-card,
+.analysis-layout,
+.form-aside {
+  width: 100%;
+}
+
+/* Card principal */
 .form-container {
-  position: relative;
-  z-index: 1; /* garante que os componentes fiquem acima do overlay */
+  border-radius: 24px !important;
+  overflow: hidden;
+
+  background: rgba(255,255,255,.95);
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,.75);
+
+  box-shadow:
+    0 15px 35px rgba(15,23,42,.08),
+    0 5px 15px rgba(15,23,42,.05);
+
+  transition: all .25s ease;
+}
+
+.form-container:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 22px 45px rgba(15,23,42,.12),
+    0 10px 20px rgba(15,23,42,.08);
+}
+
+/* Cabeçalho */
+mat-card-header {
+  padding: 24px;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #4f46e5
+  );
+}
+
+mat-card-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+mat-card-content {
+  padding: 24px !important;
+}
+
+/* Container da tabela */
+.table-wrapper {
+  border-radius: 18px;
+  overflow: hidden;
+
+  border: 1px solid #e2e8f0;
+
+  background: white;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+}
+
+/* Cabeçalho */
+.mat-mdc-header-row {
+  background:
+    linear-gradient(
+      90deg,
+      #ede9fe,
+      #e0e7ff
+    );
+}
+
+.mat-mdc-header-cell {
+  padding: 18px;
+
+  color: #312e81;
+  font-weight: 700;
+  font-size: .95rem;
+
+  border-bottom: 2px solid #c4b5fd;
+}
+
+/* Linhas */
+.mat-mdc-row {
+  transition: all .2s ease;
+}
+
+.mat-mdc-row:hover {
+  background: #faf5ff;
+
+  box-shadow:
+    inset 4px 0 0 #7c3aed;
+
+  cursor: pointer;
+}
+
+/* Células */
+.mat-mdc-cell {
+  padding: 18px;
+
+  color: #475569;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Zebra */
+.mat-mdc-row:nth-child(even) {
+  background: rgba(248,250,252,.6);
+}
+
+/* Nome da categoria */
+.mat-column-name {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+/* Scroll */
+.table-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #a78bfa;
+  border-radius: 999px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+@media (max-width: 768px) {
+
+  .site-body {
+    padding: 16px;
+  }
+
+  .mat-mdc-header-cell,
+  .mat-mdc-cell {
+    padding: 12px;
+  }
+
 }

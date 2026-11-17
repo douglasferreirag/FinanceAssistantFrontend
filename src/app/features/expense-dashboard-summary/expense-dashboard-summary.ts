@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chart, ChartType, registerables } from 'chart.js';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { Footer } from "../../layouts/footer/footer.js";
 
 import { DashBoardSummaryResponse } from '../../dtos/responses/dashboardsummary-response.js';

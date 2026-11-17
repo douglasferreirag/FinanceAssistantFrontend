@@ -19,6 +19,5 @@ export class ExpenseRegisterHeaderComponent {
   @Output() save = new EventEmitter<ExpenseRequest>();
   @Output() clear = new EventEmitter<void>();
   @Output() home = new EventEmitter<void>();
-  @Output() importCategories = new EventEmitter<void>();
-  @Output() importPersons = new EventEmitter<void>();
+
 }

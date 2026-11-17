@@ -8,7 +8,7 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { Footer } from "../../layouts/footer/footer.js";
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 
 import { ExpenseAnalyzeHistoryBodyComponent } from '../../layouts/bodies/expense-analyzehistory-body/expense-analyzehistory-body.component.js';
 import { ExpenseAnalyzeHistoryHeaderComponent } from '../../layouts/headers/expense-analyzehistory-header/expense-analyzehistory-header.component.js';
@@ -43,10 +43,10 @@ export class ExpenseAnalyzeHistoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loadPersons();
+    this.importPersons();
   }
 
-  loadPersons(): void {
+  importPersons(): void {
     this.http
       .get<string[]>('http://localhost:8080/api/persons/names')
       .subscribe({

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationService } from '../../utils/NavigationService.js';
+import { NavigationService } from '../../services/NavigationService.js';
 import { Footer } from "../../layouts/footer/footer.js";
 import { ExpenseListBodyComponent } from "../../layouts/bodies/expense-list-body/expense-list-body.js";
 import { ExpenseListHeaderComponent } from "../../layouts/headers/expense-list-header/expense-list-header.js";
